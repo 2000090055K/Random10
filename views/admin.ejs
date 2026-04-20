@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Random Ten</title>
+  <style>
+    :root { --navy:#1A1A2E; --gold:#F5A623; --red:#E94560; --white:#fff; --grey:#9CA3AF; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:system-ui,sans-serif; background:#0D0D18; color:var(--white); padding:40px 24px; }
+    h1 { color:var(--gold); font-size:24px; margin-bottom:4px; letter-spacing:0.1em; }
+    .sub { color:var(--grey); font-size:13px; margin-bottom:40px; }
+    h2 { font-size:16px; margin-bottom:16px; color:var(--white); padding-bottom:8px; border-bottom:1px solid rgba(245,166,35,0.2); }
+    .section { margin-bottom:48px; }
+    .stat-row { display:flex; gap:24px; margin-bottom:32px; flex-wrap:wrap; }
+    .stat { background:#1A1A2E; border:1px solid rgba(245,166,35,0.15); border-radius:6px; padding:20px 28px; }
+    .stat__num { font-size:32px; font-weight:700; color:var(--gold); }
+    .stat__label { font-size:12px; color:var(--grey); margin-top:4px; letter-spacing:0.1em; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th { text-align:left; padding:10px 12px; background:#1A1A2E; color:var(--gold); font-size:11px; letter-spacing:0.15em; border-bottom:1px solid rgba(255,255,255,0.08); }
+    td { padding:10px 12px; border-bottom:1px solid rgba(255,255,255,0.05); color:rgba(255,255,255,0.8); }
+    tr:hover td { background:rgba(255,255,255,0.02); }
+    .badge { display:inline-block; padding:2px 8px; border-radius:3px; font-size:11px; font-weight:700; }
+    .badge--green { background:rgba(46,196,182,0.15); color:#2EC4B6; }
+    .empty { color:var(--grey); font-size:13px; padding:20px 0; }
+  </style>
+</head>
+<body>
+  <h1>RANDOM TEN — ADMIN</h1>
+  <p class="sub">Internal dashboard. Keep this URL private.</p>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="stat__num"><%= waitlist.length %></div>
+      <div class="stat__label">WAITLIST SIGNUPS</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num"><%= payments.length %></div>
+      <div class="stat__label">COMPLETED PAYMENTS</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num">
+        £<%= (payments.reduce((sum, p) => sum + (p.amount_total || 0), 0) / 100).toLocaleString() %>
+      </div>
+      <div class="stat__label">TOTAL REVENUE</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Waitlist Signups</h2>
+    <% if (waitlist.length === 0) { %>
+      <p class="empty">No signups yet.</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th><th>Name</th><th>Email</th><th>City</th><th>Source</th><th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% waitlist.forEach(function(w, i) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= w.name %></td>
+              <td><%= w.email %></td>
+              <td><%= w.city || '—' %></td>
+              <td><%= w.source %></td>
+              <td><%= new Date(w.created_at).toLocaleDateString('en-GB') %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } %>
+  </div>
+
+  <div class="section">
+    <h2>Payments</h2>
+    <% if (payments.length === 0) { %>
+      <p class="empty">No payments yet.</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th><th>Name</th><th>Email</th><th>Amount</th><th>Status</th><th>Stripe Session</th><th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% payments.forEach(function(p, i) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= p.customer_name || '—' %></td>
+              <td><%= p.customer_email %></td>
+              <td>£<%= ((p.amount_total || 0) / 100).toFixed(2) %></td>
+              <td><span class="badge badge--green"><%= p.status %></span></td>
+              <td style="font-size:11px;color:var(--grey)"><%= p.stripe_session_id.slice(0,24) %>…</td>
+              <td><%= new Date(p.created_at).toLocaleDateString('en-GB') %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Random Ten — A one-year journey across thirty non-traditional skills. Find your ikigai.">
+  <title>Random Ten — Find Your Ikigai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══════════════════════════════════════════════════════════ -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Random Ten home">
+        <span class="nav__logo-text">RANDOM TEN</span>
+        <span class="nav__logo-dot"></span>
+      </a>
+      <div class="nav__links">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#skills">The Skills</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <button class="btn btn--gold btn--sm nav__cta" onclick="openWaitlist()">Join Waitlist</button>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ════════════════════════════════════════════════════════════ -->
+  <section class="hero" aria-labelledby="hero-headline">
+    <div class="hero__bg-number" aria-hidden="true">10</div>
+    <div class="hero__grain" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__tag animate-up" style="animation-delay:0.1s">
+        <span class="dot"></span> Now accepting early enrolments
+      </div>
+      <h1 class="hero__headline animate-up" id="hero-headline" style="animation-delay:0.2s">
+        Stop choosing<br>one path.<br><em>Explore thirty.</em>
+      </h1>
+      <p class="hero__sub animate-up" style="animation-delay:0.3s">
+        Random Ten is a structured one-year journey across thirty non-traditional skills — helping you discover what you love, master it, and turn it into a living. This is how you find your ikigai.
+      </p>
+      <div class="hero__ctas animate-up" style="animation-delay:0.4s">
+        <button class="btn btn--gold btn--lg" onclick="openWaitlist()" aria-label="Join the Random Ten waitlist">
+          Join the Waitlist
+        </button>
+        <button class="btn btn--outline btn--lg" onclick="scrollTo('pricing')" aria-label="View enrolment pricing">
+          Enrol Now — £650
+        </button>
+      </div>
+      <div class="hero__social-proof animate-up" style="animation-delay:0.5s">
+        <div class="avatars" aria-hidden="true">
+          <div class="avatar" style="background:#E94560"></div>
+          <div class="avatar" style="background:#F5A623"></div>
+          <div class="avatar" style="background:#2EC4B6"></div>
+          <div class="avatar" style="background:#9CA3AF"></div>
+        </div>
+        <span>Join <strong>hundreds</strong> already on the waitlist</span>
+      </div>
+    </div>
+
+    <!-- Visual mockup -->
+    <div class="hero__mockup animate-up" style="animation-delay:0.5s" aria-hidden="true">
+      <div class="mockup-card">
+        <div class="mockup-card__header">
+          <span class="mockup-card__tag">PHASE 01 — MONTH 2</span>
+          <span class="mockup-card__status">Active</span>
+        </div>
+        <div class="mockup-card__skill">POTTERY<span class="gold-dot">.</span></div>
+        <div class="mockup-card__meta">Craft &amp; Making &nbsp;·&nbsp; Week 3 of 4</div>
+        <div class="mockup-card__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" style="width:72%"></div>
+          </div>
+          <span>72% complete</span>
+        </div>
+        <div class="mockup-card__skills-row">
+          <span class="skill-pill">🏺 Pottery</span>
+          <span class="skill-pill">📷 Photography</span>
+          <span class="skill-pill">🎵 Beatmaking</span>
+          <span class="skill-pill">✒️ Calligraphy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROBLEM ══════════════════════════════════════════════════════════ -->
+  <section class="problem" aria-labelledby="problem-heading">
+    <div class="container">
+      <p class="section-eyebrow">The Problem</p>
+      <h2 class="section-heading" id="problem-heading">
+        You were told to choose.<br>Before you had a chance to explore.
+      </h2>
+      <div class="problem__cards">
+        <div class="problem__card">
+          <div class="problem__card-number">01</div>
+          <p class="problem__card-text">"You picked a career at 18 with almost no real experience of what different fields actually feel like."</p>
+        </div>
+        <div class="problem__card">
+          <div class="problem__card-number">02</div>
+          <p class="problem__card-text">"You studied what seemed safe. Or what your parents suggested. Or what sounded impressive at dinner tables."</p>
+        </div>
+        <div class="problem__card">
+          <div class="problem__card-number">03</div>
+          <p class="problem__card-text">"You still don't know what you love — not because it doesn't exist, but because nobody ever gave you the space to find it."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ HOW IT WORKS ═════════════════════════════════════════════════════ -->
+  <section class="how" id="how-it-works" aria-labelledby="how-heading">
+    <div class="container">
+      <p class="section-eyebrow">The Solution</p>
+      <h2 class="section-heading" id="how-heading">One year. Three phases.<br><em>Infinite possibility.</em></h2>
+      <div class="phases">
+
+        <div class="phase">
+          <div class="phase__number" aria-hidden="true">01</div>
+          <div class="phase__content">
+            <div class="phase__tag">Months 1 — 3</div>
+            <h3 class="phase__title">Explore.</h3>
+            <p class="phase__body">Ten skills are randomly assigned to you from our library of thirty. One week per skill. No overthinking, no safe choices — just genuine exposure to things you might never have chosen yourself.</p>
+            <ul class="phase__list" aria-label="Phase 1 includes">
+              <li>10 randomised skills</li>
+              <li>Pre-recorded weekly modules</li>
+              <li>One live expert session per skill</li>
+              <li>Community skill forum access</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase__number" aria-hidden="true">02</div>
+          <div class="phase__content">
+            <div class="phase__tag">Months 4 — 6</div>
+            <h3 class="phase__title">Discover.</h3>
+            <p class="phase__body">Ten more skills from the remaining twenty. By now, signals are emerging. Pay attention to the skill that made you feel most alive — the one that made the week disappear.</p>
+            <ul class="phase__list" aria-label="Phase 2 includes">
+              <li>10 more randomised skills</li>
+              <li>20 skills explored in total</li>
+              <li>Your personal ikigai map builds</li>
+              <li>Peer accountability groups</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase phase--gold">
+          <div class="phase__number" aria-hidden="true">03</div>
+          <div class="phase__content">
+            <div class="phase__tag">Months 7 — 12</div>
+            <h3 class="phase__title">Master.</h3>
+            <p class="phase__body">You choose two skills and go all in. Six months of real depth, real proficiency, and a structured monetisation roadmap to help you turn what you love into how you live.</p>
+            <ul class="phase__list" aria-label="Phase 3 includes">
+              <li>2 chosen skills, deep focus</li>
+              <li>Advanced expert curriculum</li>
+              <li>1-on-1 mentorship available</li>
+              <li>Monetisation workshop</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SKILLS ════════════════════════════════════════════════════════════ -->
+  <section class="skills" id="skills" aria-labelledby="skills-heading">
+    <div class="container">
+      <p class="section-eyebrow">The Curriculum</p>
+      <h2 class="section-heading" id="skills-heading">
+        Thirty doors.<br>None of them in a university.
+      </h2>
+      <div class="skills__grid" role="list">
+        <% const skills = [
+          { name:'Pottery', icon:'🏺', cat:'Craft' },
+          { name:'Tattooing', icon:'🖊️', cat:'Body Art' },
+          { name:'Photography', icon:'📷', cat:'Visual Art' },
+          { name:'Beatmaking', icon:'🎛️', cat:'Music' },
+          { name:'Calligraphy', icon:'✒️', cat:'Visual Art' },
+          { name:'Sound Healing', icon:'🎵', cat:'Wellness' },
+          { name:'Carpentry', icon:'🪚', cat:'Craft' },
+          { name:'Bread Making', icon:'🍞', cat:'Food' },
+          { name:'Leather Craft', icon:'👜', cat:'Craft' },
+          { name:'Illustration', icon:'🎨', cat:'Visual Art' },
+          { name:'Urban Gardening', icon:'🌱', cat:'Nature' },
+          { name:'Videography', icon:'🎬', cat:'Visual Art' },
+          { name:'Yoga Instruction', icon:'🧘', cat:'Wellness' },
+          { name:'Candle Making', icon:'🕯️', cat:'Craft' },
+          { name:'Stand-Up Comedy', icon:'🎤', cat:'Performance' },
+          { name:'Skincare Formulation', icon:'🧴', cat:'Wellness' },
+          { name:'Street Art', icon:'🖌️', cat:'Visual Art' },
+          { name:'Fermentation', icon:'🫙', cat:'Food' },
+          { name:'Voice Acting', icon:'🎙️', cat:'Performance' },
+          { name:'Life Coaching', icon:'💡', cat:'Development' },
+          { name:'Event Planning', icon:'✨', cat:'Creative' },
+          { name:'Beekeeping', icon:'🐝', cat:'Nature' },
+          { name:'Hairdressing', icon:'✂️', cat:'Wellness' },
+          { name:'Textile Design', icon:'🧵', cat:'Craft' },
+          { name:'Spoken Word', icon:'📖', cat:'Performance' },
+          { name:'Home Barista', icon:'☕', cat:'Food' },
+          { name:'Upcycling', icon:'♻️', cat:'Nature' },
+          { name:'Plant-Based Cooking', icon:'🥦', cat:'Food' },
+          { name:'Music Production', icon:'🎹', cat:'Music' },
+          { name:'Graphic Design', icon:'🖥️', cat:'Visual Art' },
+        ]; %>
+        <% skills.forEach(function(s) { %>
+          <div class="skill-card" role="listitem">
+            <span class="skill-card__icon" aria-hidden="true"><%= s.icon %></span>
+            <span class="skill-card__name"><%= s.name %><span class="skill-card__dot">.</span></span>
+            <span class="skill-card__cat"><%= s.cat %></span>
+          </div>
+        <% }); %>
+      </div>
+      <p class="skills__note">The curriculum grows as the community grows.</p>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS ══════════════════════════════════════════════════════ -->
+  <section class="testimonials" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <p class="section-eyebrow">Early Community</p>
+      <h2 class="section-heading" id="testimonials-heading">People already finding their doors.</h2>
+      <div class="testimonials__grid">
+        <blockquote class="testimonial">
+          <p>"I have been in finance for six years and secretly making ceramics on weekends. Nobody around me takes it seriously. Random Ten would have changed everything."</p>
+          <footer><strong>Priya M.</strong> — London, Waitlist Member</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"The randomisation is what sold me. I would have chosen the safe options. Being forced into things I would never pick is exactly the point."</p>
+          <footer><strong>James T.</strong> — Dubai, Waitlist Member</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"I watched the founder's first video and forwarded it to four people immediately. This is the platform our generation has been waiting for."</p>
+          <footer><strong>Anika R.</strong> — Mumbai, Waitlist Member</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PRICING ═══════════════════════════════════════════════════════════ -->
+  <section class="pricing" id="pricing" aria-labelledby="pricing-heading">
+    <div class="container">
+      <p class="section-eyebrow">Enrolment</p>
+      <h2 class="section-heading" id="pricing-heading">One investment.<br>One transformative year.</h2>
+      <div class="pricing__cards">
+
+        <div class="pricing__card">
+          <div class="pricing__card-tag">Waitlist — Free</div>
+          <div class="pricing__card-price">£0</div>
+          <p class="pricing__card-desc">Reserve your place before enrolment opens. Be first to receive your cohort start date and early access offer.</p>
+          <ul class="pricing__card-features" aria-label="Waitlist includes">
+            <li>Priority cohort placement</li>
+            <li>Early access pricing</li>
+            <li>Weekly founder updates</li>
+            <li>Community pre-launch access</li>
+          </ul>
+          <button class="btn btn--outline btn--full" onclick="openWaitlist()" aria-label="Join the free waitlist">
+            Join the Waitlist
+          </button>
+        </div>
+
+        <div class="pricing__card pricing__card--featured">
+          <div class="pricing__card-badge">Most Popular</div>
+          <div class="pricing__card-tag">Annual Enrolment</div>
+          <div class="pricing__card-price">£650 <span>/year</span></div>
+          <p class="pricing__card-desc">Full access to all three phases, thirty skills, live expert sessions, community, and Phase 3 mastery and monetisation programme.</p>
+          <ul class="pricing__card-features" aria-label="Annual enrolment includes">
+            <li>All 30 skills — all three phases</li>
+            <li>Weekly live expert cohort sessions</li>
+            <li>Pre-recorded skill modules</li>
+            <li>Community forum and peer groups</li>
+            <li>Personal ikigai map and skill journal</li>
+            <li>Phase 3 monetisation workshop</li>
+            <li>London, Mumbai, Dubai or New York café access</li>
+          </ul>
+          <button class="btn btn--gold btn--full" id="checkout-btn" onclick="handleCheckout()" aria-label="Enrol now for £650 per year">
+            Enrol Now — £650
+          </button>
+          <p class="pricing__card-note">Secure payment via Stripe. One payment, full year access.</p>
+        </div>
+
+        <div class="pricing__card">
+          <div class="pricing__card-tag">Premium Mentorship</div>
+          <div class="pricing__card-price">£50 <span>/session</span></div>
+          <p class="pricing__card-desc">One-on-one sessions with your Phase 3 expert. Available as an add-on during the mastery phase for students who want accelerated depth.</p>
+          <ul class="pricing__card-features" aria-label="Premium mentorship includes">
+            <li>60-minute 1:1 expert session</li>
+            <li>Personalised feedback on your work</li>
+            <li>Monetisation strategy review</li>
+            <li>Available from Month 7 onwards</li>
+          </ul>
+          <button class="btn btn--outline btn--full" onclick="openWaitlist()" aria-label="Join the waitlist for mentorship information">
+            Join Waitlist First
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CAFE ═══════════════════════════════════════════════════════════════ -->
+  <section class="cafe" aria-labelledby="cafe-heading">
+    <div class="container cafe__inner">
+      <div class="cafe__text">
+        <p class="section-eyebrow">The Community</p>
+        <h2 id="cafe-heading">Where the online becomes real.</h2>
+        <p>Random Ten cafés are members-only physical spaces in London, Mumbai, Dubai, and New York — opening as each city's community reaches critical mass. Weekly skill swaps, expert meetups, ikigai workshops, and community showcases.</p>
+        <div class="cafe__cities">
+          <span class="city-pill city-pill--live">London — 2026</span>
+          <span class="city-pill">Mumbai — Coming</span>
+          <span class="city-pill">Dubai — Coming</span>
+          <span class="city-pill">New York — Coming</span>
+        </div>
+      </div>
+      <div class="cafe__visual" aria-hidden="true">
+        <div class="cafe__card">
+          <p class="cafe__card-eyebrow">Next Event · London</p>
+          <p class="cafe__card-title">The First Chapter</p>
+          <p class="cafe__card-meta">Expert Meetup · Skill Demo · Community</p>
+          <div class="cafe__card-divider"></div>
+          <p class="cafe__card-rsvp">RSVP via waitlist →</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FINAL CTA ══════════════════════════════════════════════════════════ -->
+  <section class="final-cta" aria-labelledby="final-cta-heading">
+    <div class="final-cta__grain" aria-hidden="true"></div>
+    <div class="container final-cta__inner">
+      <p class="section-eyebrow" style="color:rgba(245,166,35,0.7)">Your Year Starts Now</p>
+      <h2 id="final-cta-heading">
+        Thirty doors.<br>One year.<br><em>One you.</em>
+      </h2>
+      <p>Your ikigai is not a coincidence waiting to happen. It is a discovery waiting to be designed.</p>
+      <div class="final-cta__btns">
+        <button class="btn btn--gold btn--lg" onclick="openWaitlist()">Join the Waitlist — Free</button>
+        <button class="btn btn--outline btn--lg" onclick="handleCheckout()">Enrol Now — £650</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ═════════════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="nav__logo-text">RANDOM TEN</span>
+        <p>Find Your Ikigai</p>
+      </div>
+      <nav class="footer__links" aria-label="Footer navigation">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#skills">The Skills</a>
+        <a href="#pricing">Pricing</a>
+        <a href="mailto:hello@randomten.co">Contact</a>
+      </nav>
+      <p class="footer__copy">© 2026 Random Ten. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ══ WAITLIST MODAL ═════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal">
+      <button class="modal__close" onclick="closeWaitlist()" aria-label="Close waitlist form">✕</button>
+      <p class="modal__eyebrow">Join the Waitlist</p>
+      <h3 class="modal__title" id="modal-title">Reserve your place before enrolment opens.</h3>
+      <form id="waitlist-form" novalidate>
+        <div class="form-group">
+          <label for="wl-name">Your name</label>
+          <input type="text" id="wl-name" name="name" placeholder="Full name" autocomplete="name" required aria-required="true">
+        </div>
+        <div class="form-group">
+          <label for="wl-email">Email address</label>
+          <input type="email" id="wl-email" name="email" placeholder="your@email.com" autocomplete="email" required aria-required="true">
+        </div>
+        <div class="form-group">
+          <label for="wl-city">Your city <span style="color:var(--grey);font-weight:400">(optional)</span></label>
+          <input type="text" id="wl-city" name="city" placeholder="London, Mumbai, Dubai…">
+        </div>
+        <button type="submit" class="btn btn--gold btn--full" id="waitlist-submit">
+          Secure My Place
+        </button>
+        <div id="waitlist-feedback" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══ TOAST ══════════════════════════════════════════════════════════════ -->
+  <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+  <!-- ══ SCRIPTS ════════════════════════════════════════════════════════════ -->
+  <script>
+    // ── Waitlist modal ──────────────────────────────────────────────────
+    function openWaitlist() {
+      const modal = document.getElementById('waitlist-modal');
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      document.getElementById('wl-name').focus();
+    }
+    function closeWaitlist() {
+      document.getElementById('waitlist-modal').hidden = true;
+      document.body.style.overflow = '';
+    }
+    document.getElementById('waitlist-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeWaitlist();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeWaitlist();
+    });
+
+    // ── Waitlist form submit ────────────────────────────────────────────
+    document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('waitlist-submit');
+      const feedback = document.getElementById('waitlist-feedback');
+      const name  = document.getElementById('wl-name').value.trim();
+      const email = document.getElementById('wl-email').value.trim();
+      const city  = document.getElementById('wl-city').value.trim();
+
+      if (!name || !email) {
+        feedback.innerHTML = '<p class="form-error">Please enter your name and email.</p>';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Securing your place…';
+      feedback.innerHTML = '';
+
+      try {
+        const res  = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, city }),
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          feedback.innerHTML = `<p class="form-success">You are on the list, ${name}. Check your inbox.</p>`;
+          btn.textContent = 'You are in.';
+          showToast('Welcome to Random Ten. Your place is reserved.');
+          setTimeout(closeWaitlist, 2500);
+        } else {
+          feedback.innerHTML = `<p class="form-error">${data.error || 'Something went wrong.'}</p>`;
+          btn.disabled = false;
+          btn.textContent = 'Secure My Place';
+        }
+      } catch {
+        feedback.innerHTML = '<p class="form-error">Connection error. Please try again.</p>';
+        btn.disabled = false;
+        btn.textContent = 'Secure My Place';
+      }
+    });
+
+    // ── Stripe Checkout ─────────────────────────────────────────────────
+    async function handleCheckout() {
+      const btn = document.getElementById('checkout-btn');
+      if (btn) { btn.disabled = true; btn.textContent = 'Loading…'; }
+
+      try {
+        const res  = await fetch('/api/checkout', { method: 'POST' });
+        const data = await res.json();
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          showToast(data.error || 'Could not open payment. Please try again.');
+          if (btn) { btn.disabled = false; btn.textContent = 'Enrol Now — £650'; }
+        }
+      } catch {
+        showToast('Connection error. Please try again.');
+        if (btn) { btn.disabled = false; btn.textContent = 'Enrol Now — £650'; }
+      }
+    }
+
+    // ── Smooth scroll ───────────────────────────────────────────────────
+    function scrollTo(id) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ── Toast notification ──────────────────────────────────────────────
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('toast--visible');
+      setTimeout(() => t.classList.remove('toast--visible'), 4000);
+    }
+
+    // ── Scroll reveal ───────────────────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.phase, .problem__card, .skill-card, .testimonial, .pricing__card')
+      .forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
