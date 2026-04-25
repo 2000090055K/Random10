@@ -206,8 +206,8 @@ app.post('/api/checkout', apiLimiter, async (req, res) => {
           currency: process.env.STRIPE_CURRENCY || 'gbp',
           unit_amount: parseInt(process.env.STRIPE_PRICE_AMOUNT || '65000'),
           product_data: {
-            name: 'Random Ten — Annual Enrolment',
-            description: 'One year. Thirty skills. Find your ikigai. Includes all three phases, live cohort sessions, community access, and Phase 3 mastery and monetisation programme.',
+            name: 'Random Ten — Founding Cohort',
+            description: 'Founding cohort access to Phase 1 of Random Ten, including 10 skill challenges, skill journal, founder updates, and early community access.',
             images: [],
           },
         },
@@ -217,7 +217,7 @@ app.post('/api/checkout', apiLimiter, async (req, res) => {
       billing_address_collection: 'auto',
       success_url: `${base}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url:  `${base}/cancel`,
-      metadata: { product: 'random10-annual', source: 'landing' },
+      metadata: { product: 'random10-founding-cohort', source: 'landing' },
     });
 
     res.json({ url: session.url });

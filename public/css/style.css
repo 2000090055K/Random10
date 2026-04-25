@@ -460,6 +460,108 @@ ul { list-style: none; }
   color: var(--gold);
 }
 
+/* ── Experience section ────────────────────────────────────────────────── */
+.experience {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.experience__steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.experience__step {
+  background: var(--navy-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+}
+
+.experience__step span {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.experience__step h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.experience__step p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+}
+
+/* ── Founder section ───────────────────────────────────────────────────── */
+.founder {
+  padding: 120px 0;
+  background: var(--navy);
+  border-top: 1px solid var(--border);
+}
+
+.founder__inner {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.founder__text {
+  font-size: 16px;
+  color: rgba(255,255,255,0.68);
+  line-height: 1.75;
+  margin-bottom: 18px;
+  max-width: 680px;
+}
+
+.founder__card {
+  background: linear-gradient(135deg, #1e1e3a 0%, #22223F 100%);
+  border: 1px solid rgba(245,166,35,0.25);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+}
+
+.founder__card-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.founder__card h3 {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.founder__card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+  .experience__steps {
+    grid-template-columns: 1fr;
+  }
+
+  .founder__inner {
+    grid-template-columns: 1fr;
+  }
+}
 /* ── Skills grid ────────────────────────────────────────────────────────── */
 .skills {
   padding: 120px 0;
