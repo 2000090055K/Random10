@@ -46,9 +46,9 @@
         <button class="btn btn--gold btn--lg" onclick="openWaitlist()" aria-label="Join the Random Ten waitlist">
           Join the Waitlist
         </button>
-        <button class="btn btn--outline btn--lg" onclick="scrollTo('pricing')" aria-label="View founding cohort options">
-          Apply for Founding Cohort
-        </button>
+        <button class="btn btn--outline btn--lg" onclick="openWaitlist()" aria-label="Apply for the Random Ten founding cohort">
+  Apply for Founding Cohort
+</button>
       </div>
       <div class="hero__social-proof animate-up" style="animation-delay:0.5s">
         <div class="avatars" aria-hidden="true">
@@ -416,7 +416,7 @@
       <p>Your ikigai is not a coincidence waiting to happen. It is a discovery waiting to be designed.</p>
       <div class="final-cta__btns">
         <button class="btn btn--gold btn--lg" onclick="openWaitlist()">Join the Waitlist — Free</button>
-        <button class="btn btn--outline btn--lg" onclick="scrollTo('pricing')">View Founding Cohort</button>
+        <button class="btn btn--outline btn--lg" onclick="scrollToSection('pricing')">View Founding Cohort</button>
       </div>
     </div>
   </section>
@@ -552,9 +552,12 @@
     }
 
     // ── Smooth scroll ───────────────────────────────────────────────────
-    function scrollTo(id) {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    function scrollToSection(id) {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
 
     // ── Toast notification ──────────────────────────────────────────────
     function showToast(msg) {
