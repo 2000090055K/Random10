@@ -62,9 +62,9 @@
           </div>
         </div>
         <div class="choice-sequence" aria-label="How increasing choice creates overload" data-choice-sequence>
-          <% [6, 12, 30].forEach(function(count, stateIndex) { const messages = ['This feels manageable.', 'You are starting to compare.', 'Now which one do you choose?']; %>
+          <% [6, 12, 30].forEach(function(count, stateIndex) { const messages = ['This feels manageable.', 'You are starting to compare.', 'Now which one do you choose?']; const markers = ['Calm', 'Comparison', 'Overload']; %>
             <article data-choice-state="<%= stateIndex %>">
-              <span class="choice-sequence__number"><%= String(count).padStart(2, '0') %></span>
+              <div class="choice-sequence__marker"><span class="choice-sequence__number"><%= String(count).padStart(2, '0') %></span><span><%= markers[stateIndex] %> · <%= stateIndex + 1 %>/3</span></div>
               <h3><%= messages[stateIndex] %></h3>
               <ul class="choice-options" aria-label="<%= count %> skill options">
                 <% skills.slice(0, count).forEach(function(skill) { %><li><%= skill.name %></li><% }); %>
@@ -160,8 +160,8 @@
         </div>
         <div class="skill-directory">
         <ol class="skill-index" data-skill-list>
-          <% skills.forEach(function(skill) { %>
-            <li class="skill-row" id="skill-<%= skill.slug %>" data-skill-id="<%= skill.id %>">
+          <% skills.forEach(function(skill, skillIndex) { %>
+            <li class="skill-row<%= skillIndex === 0 || skills[skillIndex - 1].category !== skill.category ? ' skill-row--category-start' : '' %>" id="skill-<%= skill.slug %>" data-skill-id="<%= skill.id %>" data-skill-category="<%= skill.category %>">
               <details>
                 <summary aria-label="Select <%= skill.name %>">
                   <span class="skill-row__number"><%= String(skill.id).padStart(2, '0') %></span>
@@ -289,7 +289,7 @@
         <p class="final-belief">When I think I can, I will.</p>
         <div class="button-row button-row--center">
           <button class="button button--primary" type="button" data-waitlist-open>Join the founding waitlist</button>
-          <a class="button button--outline-light" href="#application-status">Apply for the first cohort</a>
+          <a class="button button--text-light" href="#application-status">Apply for the first cohort <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
