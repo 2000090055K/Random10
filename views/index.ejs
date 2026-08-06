@@ -44,8 +44,8 @@
           </div>
           <p class="proof-line">Thirty skills. Three phases. One year of intentional exploration.</p>
         </div>
-        <div class="hero-field" aria-label="Examples from the thirty-skill world">
-          <span>Pottery</span><span>Beatmaking</span><span>Carpentry</span><span class="hero-field__active">Spoken Word</span><span>Urban Gardening</span><span>Photography</span><span>Bread Making</span><span>Calligraphy</span><span>Event Planning</span><span>Voice Acting</span>
+        <div class="hero-field" aria-label="Examples from the thirty-skill world" data-hero-skills>
+          <% skills.slice(0, 10).forEach(function(skill, index) { %><span<%= index === 3 ? ' class="hero-field__active"' : '' %>><%= skill.name %></span><% }); %>
         </div>
       </div>
     </section>
@@ -60,15 +60,27 @@
             <p>Random Ten changes the starting point: less speculation, more direct experience.</p>
           </div>
         </div>
-        <div class="choice-sequence" aria-label="How increasing choice creates overload">
-          <article><span class="choice-sequence__number">06</span><h3>This feels manageable.</h3><p>A small field gives each possibility room to be considered.</p></article>
-          <article><span class="choice-sequence__number">12</span><h3>You are starting to compare.</h3><p>Possible futures begin competing before any has been tested.</p></article>
-          <article><span class="choice-sequence__number">30</span><h3>Now which one do you choose?</h3><p>More options create pressure to make the perfect decision.</p></article>
+        <div class="choice-sequence" aria-label="How increasing choice creates overload" data-choice-sequence>
+          <% [6, 12, 30].forEach(function(count, stateIndex) { const messages = ['This feels manageable.', 'You are starting to compare.', 'Now which one do you choose?']; %>
+            <article data-choice-state="<%= stateIndex %>">
+              <span class="choice-sequence__number"><%= String(count).padStart(2, '0') %></span>
+              <h3><%= messages[stateIndex] %></h3>
+              <ul class="choice-options" aria-label="<%= count %> skill options">
+                <% skills.slice(0, count).forEach(function(skill) { %><li><%= skill.name %></li><% }); %>
+              </ul>
+            </article>
+          <% }); %>
         </div>
-        <div class="interruption">
+        <div class="interruption" data-choice-interruption>
           <p>This is where most people stop.<br><strong>So Random Ten removes the decision.</strong></p>
-          <button class="button button--light" type="button" disabled aria-describedby="randomiser-note">Randomise my ten</button>
-          <p class="phase-note" id="randomiser-note">Interactive randomisation arrives in Phase 2. The full skill world is available below.</p>
+          <button class="button button--light" type="button" disabled data-randomise>Randomise my ten</button>
+          <div class="randomiser" data-randomiser hidden>
+            <h3>Your first ten</h3>
+            <p>No safe choices. No overthinking. Just genuine exposure.</p>
+            <ol class="randomiser__results" data-random-results></ol>
+            <button class="button button--outline-light" type="button" data-randomise-again>Randomise again</button>
+          </div>
+          <p class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-random-announcement></p>
         </div>
       </div>
     </section>
@@ -80,11 +92,21 @@
           <h2 id="method-title">Clarity does not<br>come before action.<br><span>It comes because of it.</span></h2>
           <p class="framework-line" aria-label="Try, then reflect, then score, then follow the signal">Try <span>→</span> Reflect <span>→</span> Score <span>→</span> Follow the signal</p>
         </div>
-        <div class="method-stages">
-          <article><span>01</span><h3>Try</h3><p>Enter an unfamiliar skill through a small, beginner-friendly experiment. The goal is exposure, not expertise.</p></article>
-          <article><span>02</span><h3>Reflect</h3><p>Notice what happened while the experience is fresh: what pulled you in, resisted you or made time disappear.</p></article>
-          <article><span>03</span><h3>Score</h3><p>Record enjoyment, curiosity, natural connection, energy and persistence. Keep opportunity separate from personal signal.</p></article>
-          <article><span>04</span><h3>Follow the signal</h3><p>Use patterns across several experiences to decide what deserves deeper attention next.</p></article>
+        <div class="method-stages" data-method-stages>
+          <% const methodStages = [
+            ['Try', 'Enter an unfamiliar skill through a small, beginner-friendly experiment. The goal is exposure, not expertise.'],
+            ['Reflect', 'Notice what happened while the experience is fresh: what pulled you in, resisted you or made time disappear.'],
+            ['Score', 'Record enjoyment, curiosity, natural connection, energy and persistence. Keep opportunity separate from personal signal.'],
+            ['Follow the signal', 'Use patterns across several experiences to decide what deserves deeper attention next.']
+          ]; %>
+          <% methodStages.forEach(function(stage, index) { %>
+            <article data-method-stage="<%= index %>">
+              <button type="button" aria-expanded="<%= index === 0 ? 'true' : 'false' %>" aria-controls="method-panel-<%= index %>" data-method-button>
+                <span><%= String(index + 1).padStart(2, '0') %></span><strong><%= stage[0] %></strong><em data-method-state><%= index === 0 ? 'Active stage' : 'View stage' %></em>
+              </button>
+              <div id="method-panel-<%= index %>" data-method-panel><p><%= stage[1] %></p></div>
+            </article>
+          <% }); %>
         </div>
         <aside class="score-note" aria-label="Scoring clarification">
           <p><strong>Personal Signal Score</strong> records your felt experience. <strong>Opportunity Score</strong> considers the world around the skill.</p>
@@ -100,10 +122,15 @@
           <h2 id="journey-title">One year.<br><br>Not to pause<br>your life.<br><br>To understand<br>where it should go.</h2>
           <p>A paced framework for moving from broad exposure to a more deliberate commitment. The journey is being built and tested; details may evolve with evidence.</p>
         </div>
-        <ol class="journey-path">
-          <li><span>Months 1–3</span><h3>Explore</h3><p>Meet unfamiliar skills through bounded experiments. Pay attention before narrowing down.</p></li>
-          <li><span>Months 4–6</span><h3>Discover</h3><p>Revisit the strongest signals, compare experiences and understand what keeps drawing you back.</p></li>
-          <li><span>Months 7–12</span><h3>Master</h3><p>Choose where to stop sampling and begin building with greater consistency and intent.</p></li>
+        <nav class="journey-nav" aria-label="Journey phases" data-journey-nav>
+          <button type="button" class="is-active" aria-current="step" data-journey-target="0"><span>01</span>Explore</button>
+          <button type="button" data-journey-target="1"><span>02</span>Discover</button>
+          <button type="button" data-journey-target="2"><span>03</span>Master</button>
+        </nav>
+        <ol class="journey-path" data-journey-path>
+          <li data-journey-phase="0"><span>Months 1–3</span><h3>Explore</h3><strong data-journey-state>Active phase</strong><p>Meet unfamiliar skills through bounded experiments. Pay attention before narrowing down.</p></li>
+          <li data-journey-phase="1"><span>Months 4–6</span><h3>Discover</h3><strong data-journey-state>Future phase</strong><p>Revisit the strongest signals, compare experiences and understand what keeps drawing you back.</p></li>
+          <li data-journey-phase="2"><span>Months 7–12</span><h3>Master</h3><strong data-journey-state>Future phase</strong><p>Choose where to stop sampling and begin building with greater consistency and intent.</p></li>
         </ol>
         <p class="journey-clarification">Master does not mean finished. It means you have chosen to stop sampling and begin building.</p>
       </div>
@@ -114,13 +141,24 @@
         <p class="eyebrow">The thirty-skill world</p>
         <div class="section-intro section-intro--split">
           <h2 id="skills-title">Thirty doors.<br><br>You do not need<br>to know which one<br>is yours yet.</h2>
-          <div><p>Each door begins with a small experiment. This is an editorial index for Phase 1; search, filters and surprise-me arrive in Phase 2.</p><p class="dataset-note"><%= skills.length %> skills across unfamiliar forms of making, expression, service and practice.</p></div>
+          <div><p>Each door begins with a small experiment. Search the world, follow a signal or let chance interrupt your usual choices.</p><p class="dataset-note"><%= skills.length %> skills across unfamiliar forms of making, expression, service and practice.</p></div>
         </div>
-        <ol class="skill-index">
+        <% const categories = [...new Set(skills.map(function(skill) { return skill.category; }))]; %>
+        <div class="skill-tools" data-skill-tools>
+          <div class="skill-search"><label for="skill-search">Search skills, categories or signals</label><input id="skill-search" type="search" autocomplete="off" data-skill-search></div>
+          <div class="skill-actions"><button class="button button--secondary" type="button" data-surprise>Surprise me</button><button class="button button--secondary" type="button" data-skill-reset>Reset</button></div>
+          <div class="skill-filters" aria-label="Filter skills by category" data-skill-filters>
+            <button type="button" class="is-active" aria-pressed="true" data-category="all">All</button>
+            <% categories.forEach(function(category) { %><button type="button" aria-pressed="false" data-category="<%= category %>"><%= category %></button><% }); %>
+          </div>
+          <p class="skill-count" role="status" aria-live="polite" data-skill-count><%= skills.length %> skills shown</p>
+        </div>
+        <div class="skill-directory">
+        <ol class="skill-index" data-skill-list>
           <% skills.forEach(function(skill) { %>
-            <li class="skill-row" id="skill-<%= skill.slug %>">
+            <li class="skill-row" id="skill-<%= skill.slug %>" data-skill-id="<%= skill.id %>">
               <details>
-                <summary>
+                <summary aria-label="Select <%= skill.name %>">
                   <span class="skill-row__number"><%= String(skill.id).padStart(2, '0') %></span>
                   <span class="skill-row__name"><%= skill.name %></span>
                   <span class="skill-row__category"><%= skill.category %></span>
@@ -139,6 +177,15 @@
             </li>
           <% }); %>
         </ol>
+        <aside class="skill-preview" aria-live="polite" data-skill-preview>
+          <p class="skill-preview__number" data-preview-number>01</p><p class="skill-preview__status" data-preview-status>Preview</p>
+          <h3 data-preview-name><%= skills[0].name %></h3><p data-preview-category><%= skills[0].category %></p><p data-preview-description><%= skills[0].description %></p>
+          <dl><div><dt>First experiment</dt><dd data-preview-experiment><%= skills[0].experiment %></dd></div><div><dt>Signals</dt><dd data-preview-signals><%= skills[0].signals.join(', ') %></dd></div><div><dt>Possible pathways</dt><dd data-preview-pathways><%= skills[0].pathways.join(', ') %></dd></div></dl>
+          <p class="skill-preview__surprise" data-surprise-message hidden>You may never have chosen this.<br><strong>That is the point.</strong></p>
+        </aside>
+        </div>
+        <p class="no-results" data-no-results hidden>No skills match this search. Try another word or reset the filters.</p>
+        <p class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-skill-announcement></p>
       </div>
     </section>
 
