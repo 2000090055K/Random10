@@ -270,11 +270,23 @@
     }));
     activate(0);
     if (!('IntersectionObserver' in window)) return;
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) activate(phases.indexOf(visible.target));
-    }, { threshold: [0.35, 0.65], rootMargin: '-20% 0px -25%' });
+    let scheduled = false;
+    const updateFromViewport = () => {
+      const viewportCenter = window.innerHeight / 2;
+      const nearest = phases
+        .map((phase, index) => ({ index, distance: Math.abs((phase.getBoundingClientRect().top + phase.getBoundingClientRect().bottom) / 2 - viewportCenter) }))
+        .sort((a, b) => a.distance - b.distance)[0];
+      if (nearest) activate(nearest.index);
+      scheduled = false;
+    };
+    const schedule = () => {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(updateFromViewport);
+    };
+    const observer = new IntersectionObserver(schedule, { threshold: [0.2, 0.5, 0.8], rootMargin: '-15% 0px -20%' });
     phases.forEach((phase) => observer.observe(phase));
+    window.addEventListener('scroll', schedule, { passive: true });
   }
 
   function initSkillDirectory(skills) {
@@ -410,6 +422,53 @@
     items.forEach((item) => observer.observe(item));
   }
 
+  function initFounderFilm() {
+    const trigger = document.querySelector('[data-founder-film-open]');
+    const layer = document.querySelector('[data-founder-film-modal]');
+    const modal = layer && layer.querySelector('[role="dialog"]');
+    const closeButton = layer && layer.querySelector('[data-founder-film-close]');
+    const backdrop = layer && layer.querySelector('[data-founder-film-backdrop]');
+    if (!trigger || !layer || !modal || !closeButton || !backdrop) return;
+
+    const close = () => {
+      if (layer.hidden) return;
+      layer.hidden = true;
+      document.body.classList.remove('is-locked');
+      trigger.focus();
+    };
+    const open = () => {
+      layer.hidden = false;
+      document.body.classList.add('is-locked');
+      closeButton.focus();
+    };
+
+    trigger.addEventListener('click', open);
+    closeButton.addEventListener('click', close);
+    backdrop.addEventListener('click', close);
+    layer.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        close();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const focusable = Array.from(modal.querySelectorAll(focusableSelector));
+      if (!focusable.length) {
+        event.preventDefault();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+  }
+
   function initWaitlistModal() {
     const layer = document.querySelector('[data-waitlist-modal]');
     const modal = layer && layer.querySelector('[role="dialog"]');
@@ -503,6 +562,7 @@
     initJourneyProgress();
     initSkillDirectory(skills);
     initScrollReveals();
+    initFounderFilm();
     initWaitlistModal();
     initWaitlistForm();
     initCurrentYear();

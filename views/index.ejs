@@ -47,6 +47,7 @@
         <div class="hero-field" aria-label="Examples from the thirty-skill world" data-hero-skills>
           <% skills.slice(0, 10).forEach(function(skill, index) { %><span<%= index === 3 ? ' class="hero-field__active"' : '' %>><%= skill.name %></span><% }); %>
         </div>
+        <p class="section-transition hero__transition">First, understand why choosing feels so difficult. <span aria-hidden="true">↓</span></p>
       </div>
     </section>
 
@@ -82,6 +83,7 @@
           </div>
           <p class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-random-announcement></p>
         </div>
+        <p class="section-transition section-transition--dark">From overload to a smaller place to begin. <span aria-hidden="true">↓</span></p>
       </div>
     </section>
 
@@ -109,15 +111,17 @@
           <% }); %>
         </div>
         <aside class="score-note" aria-label="Scoring clarification">
-          <p><strong>Personal Signal Score</strong> records your felt experience. <strong>Opportunity Score</strong> considers the world around the skill.</p>
-          <p>The score is not a personality diagnosis. It is a record of your experience at one moment in time.</p>
+          <div><span>01</span><strong>Personal Signal Score</strong><p>Records your felt experience: enjoyment, curiosity, natural connection, energy and persistence.</p></div>
+          <div><span>02</span><strong>Opportunity Score</strong><p>Considers the world around the skill separately from how the experience felt.</p></div>
+          <p class="score-note__disclaimer">The score is not a personality diagnosis. It is a record of your experience at one moment in time.</p>
         </aside>
+        <p class="section-transition">Experiments become evidence. Evidence becomes direction. <span aria-hidden="true">↓</span></p>
       </div>
     </section>
 
-    <section class="journey section-red" id="journey" aria-labelledby="journey-title">
+    <section class="journey" id="journey" aria-labelledby="journey-title">
       <div class="shell">
-        <p class="eyebrow eyebrow--light">Explore → Discover → Master</p>
+        <p class="eyebrow">Explore → Discover → Master</p>
         <div class="section-intro section-intro--split">
           <h2 id="journey-title">One year.<br><br>Not to pause<br>your life.<br><br>To understand<br>where it should go.</h2>
           <p>A paced framework for moving from broad exposure to a more deliberate commitment. The journey is being built and tested; details may evolve with evidence.</p>
@@ -133,6 +137,7 @@
           <li data-journey-phase="2"><span>Months 7–12</span><h3>Master</h3><strong data-journey-state>Future phase</strong><p>Choose where to stop sampling and begin building with greater consistency and intent.</p></li>
         </ol>
         <p class="journey-clarification">Master does not mean finished. It means you have chosen to stop sampling and begin building.</p>
+        <p class="section-transition">Breadth first. Then patterns. Then depth. <span aria-hidden="true">↓</span></p>
       </div>
     </section>
 
@@ -186,6 +191,7 @@
         </div>
         <p class="no-results" data-no-results hidden>No skills match this search. Try another word or reset the filters.</p>
         <p class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-skill-announcement></p>
+        <p class="section-transition">The system matters. So does the reason it exists. <span aria-hidden="true">↓</span></p>
       </div>
     </section>
 
@@ -196,9 +202,9 @@
           <h2 id="founder-title">I did not build<br>Random Ten because<br>I had everything<br>figured out.<br><br><span>I built it<br>because I did not.</span></h2>
         </div>
         <div class="founder__story">
-          <div class="media-placeholder" role="img" aria-label="Founder media placeholder. Real founder photography has not yet been supplied.">
-            <span>Founder image</span><strong>Real asset to be supplied</strong>
-          </div>
+          <button class="media-placeholder founder-film-poster" type="button" data-founder-film-open aria-haspopup="dialog">
+            <span>Founder film in production</span><strong>Preview the future film format</strong><em aria-hidden="true">Play shell&nbsp; →</em>
+          </button>
           <p>Random Ten starts from a familiar tension: being capable of many things but certain of none. Instead of asking people to declare a calling, it creates a structure for gathering evidence through action.</p>
           <p class="build-status">Random Ten is currently being built and tested.</p>
         </div>
@@ -216,6 +222,7 @@
           </ol>
         </div>
         <blockquote class="founder-belief">When I think I can,<br>I will.</blockquote>
+        <p class="section-transition section-transition--dark">A personal question becomes a shared experiment. <span aria-hidden="true">↓</span></p>
       </div>
     </section>
 
@@ -236,12 +243,19 @@
           <div class="media-placeholder media-placeholder--wide" role="img" aria-label="Community media placeholder. No live Random Ten community event is pictured."><span>Community media</span><strong>Not yet live</strong></div>
           <div><p class="status-label">Currently exploring</p><h3>Expert sessions, skill meetups, reflection circles and showcases.</h3><p>A future volunteer pathway may help people host and support experiments. It is not yet open.</p><div class="button-row"><button class="button button--primary" type="button" data-waitlist-open>Join as a participant</button><a class="button button--secondary" href="#collaborate">Explore collaboration</a></div></div>
         </div>
+        <div class="community-definitions" aria-label="Community status definitions">
+          <div><strong>Currently building</strong><p>The digital discovery framework and first participant pathway.</p></div>
+          <div><strong>Proposed format</strong><p>Expert introductions, bounded practice and group reflection.</p></div>
+          <div><strong>Not yet live</strong><p>Public events, a volunteer pathway, venues and regular programming.</p></div>
+          <div><strong>Long-term vision</strong><p>A credible bridge between online discovery and real-world practice.</p></div>
+        </div>
+        <p class="section-transition">Interest becomes participation—carefully and honestly. <span aria-hidden="true">↓</span></p>
       </div>
     </section>
 
-    <section class="offer section-red" id="join" aria-labelledby="offer-title">
+    <section class="offer" id="join" aria-labelledby="offer-title">
       <div class="shell">
-        <p class="eyebrow eyebrow--light">Two ways to begin</p>
+        <p class="eyebrow">Two ways to begin</p>
         <h2 id="offer-title">Follow the build.<br>Or join the experiment.</h2>
         <div class="offer-paths">
           <article>
@@ -249,17 +263,22 @@
             <h3>Join the founding waitlist</h3>
             <p>Free. Receive significant project updates and hear when the first participant opportunities become available.</p>
             <ul><li>Name, email and optional city only</li><li>No payment required</li><li>Leave whenever you choose</li></ul>
-            <button class="button button--light" type="button" data-waitlist-open>Join the founding waitlist</button>
+            <button class="button button--primary" type="button" data-waitlist-open>Join the founding waitlist</button>
           </article>
           <article id="application-status">
             <span>02 — Join the experiment</span>
             <h3>Apply for the first cohort</h3>
             <p>The founding cohort is planned as a small application-only test of the method. Applications are not yet open.</p>
             <ul><li>Founding price announced before applications open</li><li>Programme details may change during testing</li><li>No outcome or career change is guaranteed</li></ul>
-            <a class="button button--outline-light" href="#application-note">Applications opening soon</a>
+            <a class="button button--secondary" href="#application-note">Applications opening soon</a>
             <p class="application-note" id="application-note" tabindex="-1">No application or payment is being collected in this phase.</p>
           </article>
         </div>
+        <div class="offer-boundaries">
+          <div><p class="status-label">What the founding cohort is not</p><h3>Not a finished programme. Not a certification. Not a guaranteed career outcome.</h3></div>
+          <div><p class="status-label">Future-facing roadmap</p><p>Applications, pricing and the detailed cohort format will only be published after the homepage and waitlist experience are stable and the testing plan is ready.</p></div>
+        </div>
+        <p class="section-transition">No perfect promise. Just an honest next step. <span aria-hidden="true">↓</span></p>
       </div>
     </section>
 
@@ -302,6 +321,18 @@
         <div class="form-feedback" role="status" aria-live="polite" aria-atomic="true" data-waitlist-feedback></div>
       </form>
       <p class="form-privacy">No payment. No confirmed cohort place. Just honest updates as the project develops.</p>
+    </section>
+  </div>
+
+  <div class="modal-layer" data-founder-film-modal hidden>
+    <div class="modal-backdrop" data-founder-film-backdrop></div>
+    <section class="modal film-modal" role="dialog" aria-modal="true" aria-labelledby="founder-film-title" aria-describedby="founder-film-description">
+      <button class="modal__close" type="button" aria-label="Close founder film information" data-founder-film-close>×</button>
+      <p class="eyebrow">Founder film in production</p>
+      <h2 id="founder-film-title">No film is available yet.</h2>
+      <p id="founder-film-description">This accessible shell shows where the real founder film will live once it has been produced, reviewed and captioned.</p>
+      <div class="film-placeholder" aria-label="Inactive video placeholder"><span aria-hidden="true">▶</span><strong>Video intentionally unavailable</strong><p>No autoplay. No fabricated footage.</p></div>
+      <div class="transcript-placeholder"><h3>Transcript</h3><p>A complete transcript will be published here with the real film. Captions and a text alternative are required before launch.</p></div>
     </section>
   </div>
 
