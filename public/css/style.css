@@ -610,10 +610,15 @@ section {
 .section-transition--dark { border-top-color: #333; color: #aaa; }
 .section-transition--dark span { color: var(--rt-red); }
 .hero__transition { grid-column: 1 / -1; margin-top: clamp(48px, 6vw, 76px); }
+.choice .section-transition { margin-top: clamp(30px, 4vw, 50px); }
 
 .founder-film-poster { width: 100%; padding: 32px; color: #888; font: inherit; }
 .founder-film-poster strong { margin-block: 8px 28px; color: var(--rt-white); font-size: var(--step-1); }
 .founder-film-poster em { color: var(--rt-red); font-size: var(--step--1); font-style: normal; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+
+@media (min-width: 981px) {
+  .skills .section-intro { margin-bottom: 24px; }
+}
 
 .community-definitions { display: block; margin-top: clamp(52px, 6vw, 80px); border-top: 1px solid var(--rt-border); }
 .community-definitions > div { display: grid; grid-template-columns: minmax(160px, 0.55fr) minmax(280px, 1.45fr); gap: 34px; padding: 22px 0; border-bottom: 1px solid var(--rt-border); }
