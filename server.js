@@ -7,6 +7,7 @@ const rateLimit  = require('express-rate-limit');
 const Database   = require('better-sqlite3');
 const Stripe     = require('stripe');
 const nodemailer = require('nodemailer');
+const skills     = require('./data/skills');
 
 const app  = express();
 const port = process.env.PORT || 3000;
@@ -136,6 +137,7 @@ function isValidEmail(email) {
 // Landing page
 app.get('/', (req, res) => {
   res.render('index', {
+    skills,
     stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY || '',
     siteBaseUrl: process.env.SITE_BASE_URL || `http://localhost:${port}`,
     priceAmount: process.env.STRIPE_PRICE_AMOUNT || '65000',

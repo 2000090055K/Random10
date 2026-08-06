@@ -1,0 +1,105 @@
+:root {
+  --navy-light: #22223f;
+  --navy-dark: #0d0d18;
+  --gold: #f5a623;
+  --white: #ffffff;
+  --grey: #9ca3af;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px;
+  background: var(--navy-dark);
+  color: var(--white);
+  font-family: "DM Sans", system-ui, sans-serif;
+  text-align: center;
+}
+
+.result-card {
+  width: min(100%, 520px);
+  padding: 60px 48px;
+  background: var(--navy-light);
+  border: 1px solid rgba(245, 166, 35, 0.2);
+  border-radius: 8px;
+}
+
+.result-icon {
+  margin-bottom: 24px;
+  font-size: 56px;
+}
+
+.result-card h1 {
+  margin: 0 0 16px;
+  font-size: 32px;
+}
+
+.result-card p {
+  margin: 0 0 32px;
+  color: var(--grey);
+  line-height: 1.7;
+}
+
+.result-card .status-brand {
+  margin-bottom: 16px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn--gold {
+  background: var(--gold);
+  color: var(--navy-dark);
+}
+
+.btn--outline {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.cancel-page .result-card {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.cancel-page .result-icon {
+  font-size: 48px;
+  opacity: 0.5;
+}
+
+.cancel-page .result-card h1 {
+  font-size: 28px;
+}
+
+@media (max-width: 560px) {
+  .result-card {
+    padding: 40px 24px;
+  }
+}

@@ -1,585 +1,263 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Random Ten — A one-year journey across thirty non-traditional skills. Find your ikigai.">
-  <title>Random Ten — Find Your Ikigai</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Random Ten helps you explore unfamiliar skills and make your next decision using experience, not expectation.">
+  <title>Random Ten — A Different Way to Find Direction</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/public/css/style.css">
+  <script src="/public/js/home.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- ══ NAVBAR ══════════════════════════════════════════════════════════ -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="nav__inner">
-      <a href="/" class="nav__logo" aria-label="Random Ten home">
-        <span class="nav__logo-text">RANDOM TEN</span>
-        <span class="nav__logo-dot"></span>
-      </a>
-      <div class="nav__links">
-        <a href="#how-it-works">How It Works</a>
-        <a href="#skills">The Skills</a>
-        <a href="#pricing">Pricing</a>
-      </div>
-      <button class="btn btn--gold btn--sm nav__cta" onclick="openWaitlist()">Join Waitlist</button>
-    </div>
-  </nav>
-
-  <!-- ══ HERO ════════════════════════════════════════════════════════════ -->
-  <section class="hero" aria-labelledby="hero-headline">
-    <div class="hero__bg-number" aria-hidden="true">10</div>
-    <div class="hero__grain" aria-hidden="true"></div>
-    <div class="container hero__inner">
-      <div class="hero__tag animate-up" style="animation-delay:0.1s">
-        <span class="dot"></span> Now accepting early enrolments
-      </div>
-      <h1 class="hero__headline animate-up" id="hero-headline" style="animation-delay:0.2s">
-        Stop choosing<br>one path.<br><em>Explore thirty.</em>
-      </h1>
-      <p class="hero__sub animate-up" style="animation-delay:0.3s">
-        Random Ten is a guided skill-discovery programme where you test different creative, practical, and digital skills, track what feels natural, and choose the two paths worth building seriously.
-      </p>
-      <div class="hero__ctas animate-up" style="animation-delay:0.4s">
-        <button class="btn btn--gold btn--lg" onclick="openWaitlist()" aria-label="Join the Random Ten waitlist">
-          Join the Waitlist
-        </button>
-        <button class="btn btn--outline btn--lg" onclick="openWaitlist()" aria-label="Apply for the Random Ten founding cohort">
-  Apply for Founding Cohort
-</button>
-      </div>
-      <div class="hero__social-proof animate-up" style="animation-delay:0.5s">
-        <div class="avatars" aria-hidden="true">
-          <div class="avatar" style="background:#E94560"></div>
-          <div class="avatar" style="background:#F5A623"></div>
-          <div class="avatar" style="background:#2EC4B6"></div>
-          <div class="avatar" style="background:#9CA3AF"></div>
-        </div>
-        <span>Join the first<strong>founding members</strong> shaping Random Ten</span>
-      </div>
-    </div>
-
-    <!-- Visual mockup -->
-    <div class="hero__mockup animate-up" style="animation-delay:0.5s" aria-hidden="true">
-      <div class="mockup-card">
-        <div class="mockup-card__header">
-          <span class="mockup-card__tag">PHASE 01 — MONTH 2</span>
-          <span class="mockup-card__status">Active</span>
-        </div>
-        <div class="mockup-card__skill">POTTERY<span class="gold-dot">.</span></div>
-        <div class="mockup-card__meta">Craft &amp; Making &nbsp;·&nbsp; Week 3 of 4</div>
-        <div class="mockup-card__progress">
-          <div class="progress-bar">
-            <div class="progress-bar__fill" style="width:72%"></div>
-          </div>
-          <span>72% complete</span>
-        </div>
-        <div class="mockup-card__skills-row">
-          <span class="skill-pill">🏺 Pottery</span>
-          <span class="skill-pill">📷 Photography</span>
-          <span class="skill-pill">🎵 Beatmaking</span>
-          <span class="skill-pill">✒️ Calligraphy</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ PROBLEM ══════════════════════════════════════════════════════════ -->
-  <section class="problem" aria-labelledby="problem-heading">
-    <div class="container">
-      <p class="section-eyebrow">The Problem</p>
-      <h2 class="section-heading" id="problem-heading">
-        You were told to choose.<br>Before you had a chance to explore.
-      </h2>
-      <div class="problem__cards">
-        <div class="problem__card">
-          <div class="problem__card-number">01</div>
-          <p class="problem__card-text">"You picked a career at 18 with almost no real experience of what different fields actually feel like."</p>
-        </div>
-        <div class="problem__card">
-          <div class="problem__card-number">02</div>
-          <p class="problem__card-text">"You studied what seemed safe. Or what your parents suggested. Or what sounded impressive at dinner tables."</p>
-        </div>
-        <div class="problem__card">
-          <div class="problem__card-number">03</div>
-          <p class="problem__card-text">"You still don't know what you love — not because it doesn't exist, but because nobody ever gave you the space to find it."</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ HOW IT WORKS ═════════════════════════════════════════════════════ -->
-  <section class="how" id="how-it-works" aria-labelledby="how-heading">
-    <div class="container">
-      <p class="section-eyebrow">The Solution</p>
-      <h2 class="section-heading" id="how-heading">One year. Three phases.<br><em>Infinite possibility.</em></h2>
-      <div class="phases">
-
-        <div class="phase">
-          <div class="phase__number" aria-hidden="true">01</div>
-          <div class="phase__content">
-            <div class="phase__tag">Months 1 — 3</div>
-            <h3 class="phase__title">Explore.</h3>
-            <p class="phase__body">Ten skills are randomly assigned to you from our library of thirty. One week per skill. No overthinking, no safe choices — just genuine exposure to things you might never have chosen yourself.</p>
-            <ul class="phase__list" aria-label="Phase 1 includes">
-              <li>10 randomised skills</li>
-              <li>Pre-recorded weekly modules</li>
-              <li>One live expert session per skill</li>
-              <li>Community skill forum access</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="phase">
-          <div class="phase__number" aria-hidden="true">02</div>
-          <div class="phase__content">
-            <div class="phase__tag">Months 4 — 6</div>
-            <h3 class="phase__title">Discover.</h3>
-            <p class="phase__body">Ten more skills from the remaining twenty. By now, signals are emerging. Pay attention to the skill that made you feel most alive — the one that made the week disappear.</p>
-            <ul class="phase__list" aria-label="Phase 2 includes">
-              <li>10 more randomised skills</li>
-              <li>20 skills explored in total</li>
-              <li>Your personal ikigai map builds</li>
-              <li>Peer accountability groups</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="phase phase--gold">
-          <div class="phase__number" aria-hidden="true">03</div>
-          <div class="phase__content">
-            <div class="phase__tag">Months 7 — 12</div>
-            <h3 class="phase__title">Master.</h3>
-            <p class="phase__body">You choose two skills and go all in. Six months of real depth, real proficiency, and a structured monetisation roadmap to help you turn what you love into how you live.</p>
-            <ul class="phase__list" aria-label="Phase 3 includes">
-              <li>2 chosen skills, deep focus</li>
-              <li>Advanced expert curriculum</li>
-              <li>1-on-1 mentorship available</li>
-              <li>Monetisation workshop</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ EXPERIENCE ════════════════════════════════════════════════════════ -->
-<section class="experience" aria-labelledby="experience-heading">
-  <div class="container">
-    <p class="section-eyebrow">The Experience</p>
-    <h2 class="section-heading" id="experience-heading">
-      What happens after you join?
-    </h2>
-
-    <div class="experience__steps">
-      <div class="experience__step">
-        <span>01</span>
-        <h3>Start with reflection.</h3>
-        <p>You answer a short onboarding questionnaire so Random Ten understands your interests, fears, strengths, and current direction.</p>
-      </div>
-
-      <div class="experience__step">
-        <span>02</span>
-        <h3>Receive your first 10 skills.</h3>
-        <p>Your first phase gives you 10 beginner-friendly skill challenges from the Random Ten library.</p>
-      </div>
-
-      <div class="experience__step">
-        <span>03</span>
-        <h3>Try one skill at a time.</h3>
-        <p>Each challenge includes a simple task, reflection prompt, and scoring system so you can test the skill without feeling overwhelmed.</p>
-      </div>
-
-      <div class="experience__step">
-        <span>04</span>
-        <h3>Score what feels natural.</h3>
-        <p>You rate each skill on enjoyment, difficulty, natural ability, curiosity, and monetisation potential.</p>
-      </div>
-
-      <div class="experience__step">
-        <span>05</span>
-        <h3>Find your strongest two.</h3>
-        <p>After exploration, you identify the two skills that feel most aligned and worth developing further.</p>
-      </div>
-
-      <div class="experience__step">
-        <span>06</span>
-        <h3>Build a real direction.</h3>
-        <p>The final phase helps you go deeper, build a portfolio, and explore realistic ways to monetise your strongest skills.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- ══ SKILLS ════════════════════════════════════════════════════════════ -->
-  <section class="skills" id="skills" aria-labelledby="skills-heading">
-    <div class="container">
-      <p class="section-eyebrow">The Curriculum</p>
-      <h2 class="section-heading" id="skills-heading">
-        Thirty doors.<br>None of them in a university.
-      </h2>
-      <div class="skills__grid" role="list">
-        <% const skills = [
-          { name:'Pottery', icon:'🏺', cat:'Craft' },
-          { name:'Tattooing', icon:'🖊️', cat:'Body Art' },
-          { name:'Photography', icon:'📷', cat:'Visual Art' },
-          { name:'Beatmaking', icon:'🎛️', cat:'Music' },
-          { name:'Calligraphy', icon:'✒️', cat:'Visual Art' },
-          { name:'Sound Healing', icon:'🎵', cat:'Wellness' },
-          { name:'Carpentry', icon:'🪚', cat:'Craft' },
-          { name:'Bread Making', icon:'🍞', cat:'Food' },
-          { name:'Leather Craft', icon:'👜', cat:'Craft' },
-          { name:'Illustration', icon:'🎨', cat:'Visual Art' },
-          { name:'Urban Gardening', icon:'🌱', cat:'Nature' },
-          { name:'Videography', icon:'🎬', cat:'Visual Art' },
-          { name:'Yoga Instruction', icon:'🧘', cat:'Wellness' },
-          { name:'Candle Making', icon:'🕯️', cat:'Craft' },
-          { name:'Stand-Up Comedy', icon:'🎤', cat:'Performance' },
-          { name:'Skincare Formulation', icon:'🧴', cat:'Wellness' },
-          { name:'Street Art', icon:'🖌️', cat:'Visual Art' },
-          { name:'Fermentation', icon:'🫙', cat:'Food' },
-          { name:'Voice Acting', icon:'🎙️', cat:'Performance' },
-          { name:'Life Coaching', icon:'💡', cat:'Development' },
-          { name:'Event Planning', icon:'✨', cat:'Creative' },
-          { name:'Beekeeping', icon:'🐝', cat:'Nature' },
-          { name:'Hairdressing', icon:'✂️', cat:'Wellness' },
-          { name:'Textile Design', icon:'🧵', cat:'Craft' },
-          { name:'Spoken Word', icon:'📖', cat:'Performance' },
-          { name:'Home Barista', icon:'☕', cat:'Food' },
-          { name:'Upcycling', icon:'♻️', cat:'Nature' },
-          { name:'Plant-Based Cooking', icon:'🥦', cat:'Food' },
-          { name:'Music Production', icon:'🎹', cat:'Music' },
-          { name:'Graphic Design', icon:'🖥️', cat:'Visual Art' },
-        ]; %>
-        <% skills.forEach(function(s) { %>
-          <div class="skill-card" role="listitem">
-            <span class="skill-card__icon" aria-hidden="true"><%= s.icon %></span>
-            <span class="skill-card__name"><%= s.name %><span class="skill-card__dot">.</span></span>
-            <span class="skill-card__cat"><%= s.cat %></span>
-          </div>
-        <% }); %>
-      </div>
-      <p class="skills__note">The curriculum grows as the community grows.</p>
-    </div>
-  </section>
-
-  <!-- ══ FOUNDER ═══════════════════════════════════════════════════════════ -->
-<section class="founder" aria-labelledby="founder-heading">
-  <div class="container founder__inner">
-    <div>
-      <p class="section-eyebrow">Founder Journey</p>
-      <h2 class="section-heading" id="founder-heading">
-        I am testing the journey too.
-      </h2>
-      <p class="founder__text">
-        Random Ten was built from the belief that people should not be forced to choose one life path before they have explored what they are naturally drawn to. I am personally trying the skills myself, starting with pottery, and documenting what each skill teaches me.
-      </p>
-      <p class="founder__text">
-        The first version of Random Ten is not about pretending to have all the answers. It is about building a real system for exploration, feedback, and direction.
-      </p>
-    </div>
-
-    <div class="founder__card">
-      <p class="founder__card-label">Current founder challenge</p>
-      <h3>Testing 30 skills publicly.</h3>
-      <p>Pottery completed. More London-based skill experiments coming next.</p>
-    </div>
-  </div>
-</section>
-
-  <!-- ══ TESTIMONIALS ══════════════════════════════════════════════════════ -->
-  <section class="testimonials" aria-labelledby="testimonials-heading">
-    <div class="container">
-      <p class="section-eyebrow">Early Community</p>
-      <h2 class="section-heading" id="testimonials-heading">People already finding their doors.</h2>
-      <div class="testimonials__grid">
-        <blockquote class="testimonial">
-          <p>"I have been in finance for six years and secretly making ceramics on weekends. Nobody around me takes it seriously. Random Ten would have changed everything."</p>
-          <footer><strong>Priya M.</strong> — London, Waitlist Member</footer>
-        </blockquote>
-        <blockquote class="testimonial">
-          <p>"The randomisation is what sold me. I would have chosen the safe options. Being forced into things I would never pick is exactly the point."</p>
-          <footer><strong>James T.</strong> — Dubai, Waitlist Member</footer>
-        </blockquote>
-        <blockquote class="testimonial">
-          <p>"I watched the founder's first video and forwarded it to four people immediately. This is the platform our generation has been waiting for."</p>
-          <footer><strong>Anika R.</strong> — Mumbai, Waitlist Member</footer>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ PRICING ═══════════════════════════════════════════════════════════ -->
-  <section class="pricing" id="pricing" aria-labelledby="pricing-heading">
-    <div class="container">
-      <p class="section-eyebrow">Enrolment</p>
-      <h2 class="section-heading" id="pricing-heading">One investment.<br>One transformative year.</h2>
-      <div class="pricing__cards">
-
-        <div class="pricing__card">
-          <div class="pricing__card-tag">Waitlist — Free</div>
-          <div class="pricing__card-price">£0</div>
-          <p class="pricing__card-desc">Reserve your place before enrolment opens. Be first to receive your cohort start date and early access offer.</p>
-          <ul class="pricing__card-features" aria-label="Waitlist includes">
-            <li>Priority cohort placement</li>
-            <li>Early access pricing</li>
-            <li>Weekly founder updates</li>
-            <li>Community pre-launch access</li>
-          </ul>
-          <button class="btn btn--outline btn--full" onclick="openWaitlist()" aria-label="Join the free waitlist">
-            Join the Waitlist
-          </button>
-        </div>
-
-        <div class="pricing__card pricing__card--featured">
-  <div class="pricing__card-badge">Best First Step</div>
-  <div class="pricing__card-tag">Founding Cohort</div>
-  <div class="pricing__card-price">£199 <span>/early access</span></div>
-  <p class="pricing__card-desc">
-    Join the first small group testing Random Ten. Start with Phase 1, try your first 10 skills, use the skill journal, and help shape the programme before the full annual version opens.
-  </p>
-  <ul class="pricing__card-features" aria-label="Founding cohort includes">
-    <li>Phase 1 access</li>
-    <li>10 beginner-friendly skill challenges</li>
-    <li>Skill scoring journal</li>
-    <li>Founder updates and feedback sessions</li>
-    <li>Early community access</li>
-    <li>Priority access to the full annual programme</li>
-    <li>Discounted upgrade when Phase 2 and Phase 3 open</li>
-  </ul>
-  <button class="btn btn--gold btn--full" onclick="openWaitlist()" aria-label="Apply for the Random Ten founding cohort">
-    Apply for Founding Cohort
-  </button>
-  <p class="pricing__card-note">Founding cohort spaces are limited while the first version is being tested.</p>
-</div>
-
-        <div class="pricing__card">
-  <div class="pricing__card-tag">Full Annual Programme</div>
-  <div class="pricing__card-price">£650 <span>/year</span></div>
-  <p class="pricing__card-desc">
-    The complete Random Ten journey: explore 20 skills, identify your strongest two, and spend the final phase developing them seriously.
-  </p>
-  <ul class="pricing__card-features" aria-label="Annual programme includes">
-    <li>All three phases</li>
-    <li>20-skill discovery journey</li>
-    <li>Top-two skill selection</li>
-    <li>Mastery and monetisation phase</li>
-    <li>Community and cohort support</li>
-    <li>Future workshop access as the community grows</li>
-  </ul>
-  <button class="btn btn--outline btn--full" onclick="openWaitlist()" aria-label="Join the waitlist for the annual programme">
-    Join Waitlist First
-  </button>
-</div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ CAFE ═══════════════════════════════════════════════════════════════ -->
-  <section class="cafe" aria-labelledby="cafe-heading">
-    <div class="container cafe__inner">
-      <div class="cafe__text">
-        <p class="section-eyebrow">The Community</p>
-        <h2 id="cafe-heading">Where the online becomes real.</h2>
-        <p>The long-term vision for Random Ten is to create physical community spaces where members can practise skills, attend workshops, meet experts, and showcase their work. London is planned first as the community grows, with other cities following later</p>
-        <div class="cafe__cities">
-          <span class="city-pill city-pill--live">London — 2026</span>
-          <span class="city-pill">Mumbai — Coming</span>
-          <span class="city-pill">Dubai — Coming</span>
-          <span class="city-pill">New York — Coming</span>
-        </div>
-      </div>
-      <div class="cafe__visual" aria-hidden="true">
-        <div class="cafe__card">
-          <p class="cafe__card-eyebrow">Next Event · London</p>
-          <p class="cafe__card-title">The First Chapter</p>
-          <p class="cafe__card-meta">Expert Meetup · Skill Demo · Community</p>
-          <div class="cafe__card-divider"></div>
-          <p class="cafe__card-rsvp">RSVP via waitlist →</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ FINAL CTA ══════════════════════════════════════════════════════════ -->
-  <section class="final-cta" aria-labelledby="final-cta-heading">
-    <div class="final-cta__grain" aria-hidden="true"></div>
-    <div class="container final-cta__inner">
-      <p class="section-eyebrow" style="color:rgba(245,166,35,0.7)">Your Year Starts Now</p>
-      <h2 id="final-cta-heading">
-        Thirty doors.<br>One year.<br><em>One you.</em>
-      </h2>
-      <p>Your ikigai is not a coincidence waiting to happen. It is a discovery waiting to be designed.</p>
-      <div class="final-cta__btns">
-        <button class="btn btn--gold btn--lg" onclick="openWaitlist()">Join the Waitlist — Free</button>
-        <button class="btn btn--outline btn--lg" onclick="scrollToSection('pricing')">View Founding Cohort</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ FOOTER ═════════════════════════════════════════════════════════════ -->
-  <footer class="footer" role="contentinfo">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <span class="nav__logo-text">RANDOM TEN</span>
-        <p>Find Your Ikigai</p>
-      </div>
-      <nav class="footer__links" aria-label="Footer navigation">
-        <a href="#how-it-works">How It Works</a>
-        <a href="#skills">The Skills</a>
-        <a href="#pricing">Pricing</a>
-        <a href="mailto:hello@randomten.co">Contact</a>
+  <header class="site-header" data-site-header>
+    <div class="shell site-header__inner">
+      <a class="wordmark" href="#top" aria-label="Random Ten home">RANDOM TEN</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+        <span class="menu-toggle__label">Menu</span>
+        <span class="menu-toggle__icon" aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-menu" aria-label="Primary" data-site-menu>
+        <a href="#method">How it works</a>
+        <a href="#skills">Skills</a>
+        <a href="#journey">Journey</a>
+        <a href="#about">About</a>
+        <button class="nav-join" type="button" data-waitlist-open>Join</button>
       </nav>
-      <p class="footer__copy">© 2026 Random Ten. All rights reserved.</p>
     </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="shell hero__layout">
+        <div class="hero__copy">
+          <p class="eyebrow">A different way to find direction</p>
+          <h1 id="hero-title">You were told<br>to choose one path.<br><span>What if that<br>was the problem?</span></h1>
+          <p class="hero__intro">Random Ten helps you explore unfamiliar skills, understand what feels natural and make your next decision using experience—not expectation.</p>
+          <div class="button-row">
+            <a class="button button--primary" href="#choice">Start exploring</a>
+            <a class="button button--secondary" href="#method">See how it works</a>
+          </div>
+          <p class="proof-line">Thirty skills. Three phases. One year of intentional exploration.</p>
+        </div>
+        <div class="hero-field" aria-label="Examples from the thirty-skill world">
+          <span>Pottery</span><span>Beatmaking</span><span>Carpentry</span><span class="hero-field__active">Spoken Word</span><span>Urban Gardening</span><span>Photography</span><span>Bread Making</span><span>Calligraphy</span><span>Event Planning</span><span>Voice Acting</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="choice section-dark" id="choice" aria-labelledby="choice-title">
+      <div class="shell">
+        <p class="eyebrow eyebrow--light">The choice problem</p>
+        <div class="section-intro section-intro--split">
+          <h2 id="choice-title">More choice<br>does not always<br>create more freedom.</h2>
+          <div>
+            <p>We are taught that the right answer is waiting inside us. Then we are handed an endless list and asked to choose before we have evidence.</p>
+            <p>Random Ten changes the starting point: less speculation, more direct experience.</p>
+          </div>
+        </div>
+        <div class="choice-sequence" aria-label="How increasing choice creates overload">
+          <article><span class="choice-sequence__number">06</span><h3>This feels manageable.</h3><p>A small field gives each possibility room to be considered.</p></article>
+          <article><span class="choice-sequence__number">12</span><h3>You are starting to compare.</h3><p>Possible futures begin competing before any has been tested.</p></article>
+          <article><span class="choice-sequence__number">30</span><h3>Now which one do you choose?</h3><p>More options create pressure to make the perfect decision.</p></article>
+        </div>
+        <div class="interruption">
+          <p>This is where most people stop.<br><strong>So Random Ten removes the decision.</strong></p>
+          <button class="button button--light" type="button" disabled aria-describedby="randomiser-note">Randomise my ten</button>
+          <p class="phase-note" id="randomiser-note">Interactive randomisation arrives in Phase 2. The full skill world is available below.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="method" id="method" aria-labelledby="method-title">
+      <div class="shell">
+        <p class="eyebrow">The Random Ten method</p>
+        <div class="section-intro">
+          <h2 id="method-title">Clarity does not<br>come before action.<br><span>It comes because of it.</span></h2>
+          <p class="framework-line" aria-label="Try, then reflect, then score, then follow the signal">Try <span>→</span> Reflect <span>→</span> Score <span>→</span> Follow the signal</p>
+        </div>
+        <div class="method-stages">
+          <article><span>01</span><h3>Try</h3><p>Enter an unfamiliar skill through a small, beginner-friendly experiment. The goal is exposure, not expertise.</p></article>
+          <article><span>02</span><h3>Reflect</h3><p>Notice what happened while the experience is fresh: what pulled you in, resisted you or made time disappear.</p></article>
+          <article><span>03</span><h3>Score</h3><p>Record enjoyment, curiosity, natural connection, energy and persistence. Keep opportunity separate from personal signal.</p></article>
+          <article><span>04</span><h3>Follow the signal</h3><p>Use patterns across several experiences to decide what deserves deeper attention next.</p></article>
+        </div>
+        <aside class="score-note" aria-label="Scoring clarification">
+          <p><strong>Personal Signal Score</strong> records your felt experience. <strong>Opportunity Score</strong> considers the world around the skill.</p>
+          <p>The score is not a personality diagnosis. It is a record of your experience at one moment in time.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="journey section-red" id="journey" aria-labelledby="journey-title">
+      <div class="shell">
+        <p class="eyebrow eyebrow--light">Explore → Discover → Master</p>
+        <div class="section-intro section-intro--split">
+          <h2 id="journey-title">One year.<br><br>Not to pause<br>your life.<br><br>To understand<br>where it should go.</h2>
+          <p>A paced framework for moving from broad exposure to a more deliberate commitment. The journey is being built and tested; details may evolve with evidence.</p>
+        </div>
+        <ol class="journey-path">
+          <li><span>Months 1–3</span><h3>Explore</h3><p>Meet unfamiliar skills through bounded experiments. Pay attention before narrowing down.</p></li>
+          <li><span>Months 4–6</span><h3>Discover</h3><p>Revisit the strongest signals, compare experiences and understand what keeps drawing you back.</p></li>
+          <li><span>Months 7–12</span><h3>Master</h3><p>Choose where to stop sampling and begin building with greater consistency and intent.</p></li>
+        </ol>
+        <p class="journey-clarification">Master does not mean finished. It means you have chosen to stop sampling and begin building.</p>
+      </div>
+    </section>
+
+    <section class="skills" id="skills" aria-labelledby="skills-title">
+      <div class="shell">
+        <p class="eyebrow">The thirty-skill world</p>
+        <div class="section-intro section-intro--split">
+          <h2 id="skills-title">Thirty doors.<br><br>You do not need<br>to know which one<br>is yours yet.</h2>
+          <div><p>Each door begins with a small experiment. This is an editorial index for Phase 1; search, filters and surprise-me arrive in Phase 2.</p><p class="dataset-note"><%= skills.length %> skills across unfamiliar forms of making, expression, service and practice.</p></div>
+        </div>
+        <ol class="skill-index">
+          <% skills.forEach(function(skill) { %>
+            <li class="skill-row" id="skill-<%= skill.slug %>">
+              <details>
+                <summary>
+                  <span class="skill-row__number"><%= String(skill.id).padStart(2, '0') %></span>
+                  <span class="skill-row__name"><%= skill.name %></span>
+                  <span class="skill-row__category"><%= skill.category %></span>
+                  <span class="skill-row__action" aria-hidden="true">Explore</span>
+                </summary>
+                <div class="skill-row__detail">
+                  <p><%= skill.description %></p>
+                  <dl>
+                    <div><dt>First experiment</dt><dd><%= skill.experiment %></dd></div>
+                    <div><dt>Starting point</dt><dd><%= skill.duration %> · <%= skill.level %> · <%= skill.format %></dd></div>
+                    <div><dt>Signals to notice</dt><dd><%= skill.signals.join(', ') %></dd></div>
+                    <div><dt>Possible pathways</dt><dd><%= skill.pathways.join(', ') %></dd></div>
+                  </dl>
+                </div>
+              </details>
+            </li>
+          <% }); %>
+        </ol>
+      </div>
+    </section>
+
+    <section class="founder section-dark" id="about" aria-labelledby="founder-title">
+      <div class="shell founder__layout">
+        <div>
+          <p class="eyebrow eyebrow--light">Why Random Ten exists</p>
+          <h2 id="founder-title">I did not build<br>Random Ten because<br>I had everything<br>figured out.<br><br><span>I built it<br>because I did not.</span></h2>
+        </div>
+        <div class="founder__story">
+          <div class="media-placeholder" role="img" aria-label="Founder media placeholder. Real founder photography has not yet been supplied.">
+            <span>Founder image</span><strong>Real asset to be supplied</strong>
+          </div>
+          <p>Random Ten starts from a familiar tension: being capable of many things but certain of none. Instead of asking people to declare a calling, it creates a structure for gathering evidence through action.</p>
+          <p class="build-status">Random Ten is currently being built and tested.</p>
+        </div>
+        <div class="principles" aria-label="Three founding principles">
+          <article><span>01</span><h3>Experience before identity</h3><p>You do not need to call yourself something before you are allowed to try it.</p></article>
+          <article><span>02</span><h3>Evidence before certainty</h3><p>Small real encounters are more useful than perfect imaginary plans.</p></article>
+          <article><span>03</span><h3>Direction before destination</h3><p>A trustworthy next step matters more than a permanent answer.</p></article>
+        </div>
+        <div class="journey-so-far">
+          <h3>Journey so far</h3>
+          <ol>
+            <li><span>Origin</span><p>A personal question becomes a testable method.</p></li>
+            <li><span>Now</span><p>The homepage, skill framework and first participant pathway are being built.</p></li>
+            <li><span>Next</span><p>Test small experiences, listen carefully and publish what is learned.</p></li>
+          </ol>
+        </div>
+        <blockquote class="founder-belief">When I think I can,<br>I will.</blockquote>
+      </div>
+    </section>
+
+    <section class="community" id="community" aria-labelledby="community-title">
+      <div class="shell">
+        <p class="eyebrow">Community, proposed honestly</p>
+        <div class="section-intro section-intro--split">
+          <h2 id="community-title">Discovery should<br>not happen alone.<br><br>The internet can<br>introduce a skill.<br><br><span>Real people<br>make it come alive.</span></h2>
+          <div><p>The proposed community model connects online discovery with careful real-world practice and shared reflection.</p><p><strong>London-first testing strategy:</strong> currently exploring small, responsible formats. No public events, experts or venues are confirmed.</p></div>
+        </div>
+        <ol class="community-model">
+          <li><span>01</span><h3>Discover online</h3><p>Meet a skill, its first experiment and the signals worth noticing.</p></li>
+          <li><span>02</span><h3>Meet the expert</h3><p>Proposed format: hear how a real practitioner thinks, works and began.</p></li>
+          <li><span>03</span><h3>Try it in person</h3><p>Example session format: a safe, bounded introduction with suitable supervision.</p></li>
+          <li><span>04</span><h3>Reflect together</h3><p>Proposed format: reflection circles, showcases and shared next steps.</p></li>
+        </ol>
+        <div class="community-status">
+          <div class="media-placeholder media-placeholder--wide" role="img" aria-label="Community media placeholder. No live Random Ten community event is pictured."><span>Community media</span><strong>Not yet live</strong></div>
+          <div><p class="status-label">Currently exploring</p><h3>Expert sessions, skill meetups, reflection circles and showcases.</h3><p>A future volunteer pathway may help people host and support experiments. It is not yet open.</p><div class="button-row"><button class="button button--primary" type="button" data-waitlist-open>Join as a participant</button><a class="button button--secondary" href="#collaborate">Explore collaboration</a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="offer section-red" id="join" aria-labelledby="offer-title">
+      <div class="shell">
+        <p class="eyebrow eyebrow--light">Two ways to begin</p>
+        <h2 id="offer-title">Follow the build.<br>Or join the experiment.</h2>
+        <div class="offer-paths">
+          <article>
+            <span>01 — Follow the build</span>
+            <h3>Join the founding waitlist</h3>
+            <p>Free. Receive significant project updates and hear when the first participant opportunities become available.</p>
+            <ul><li>Name, email and optional city only</li><li>No payment required</li><li>Leave whenever you choose</li></ul>
+            <button class="button button--light" type="button" data-waitlist-open>Join the founding waitlist</button>
+          </article>
+          <article id="application-status">
+            <span>02 — Join the experiment</span>
+            <h3>Apply for the first cohort</h3>
+            <p>The founding cohort is planned as a small application-only test of the method. Applications are not yet open.</p>
+            <ul><li>Founding price announced before applications open</li><li>Programme details may change during testing</li><li>No outcome or career change is guaranteed</li></ul>
+            <a class="button button--outline-light" href="#application-note">Applications opening soon</a>
+            <p class="application-note" id="application-note" tabindex="-1">No application or payment is being collected in this phase.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-close section-dark" aria-labelledby="final-title">
+      <div class="shell final-close__inner">
+        <p class="eyebrow eyebrow--light">Begin with evidence</p>
+        <h2 id="final-title">You do not need<br>the perfect answer.<br><br>You need<br>the courage to begin<br>and the evidence<br>to continue.</h2>
+        <p class="final-belief">When I think I can, I will.</p>
+        <div class="button-row button-row--center">
+          <button class="button button--primary" type="button" data-waitlist-open>Join the founding waitlist</button>
+          <a class="button button--outline-light" href="#application-status">Apply for the first cohort</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="collaborate">
+    <div class="shell site-footer__grid">
+      <div><a class="wordmark" href="#top">RANDOM TEN</a><p>A different way to find direction.</p></div>
+      <div><h2>Explore</h2><a href="#method">How it works</a><a href="#skills">Skills</a><a href="#journey">Journey</a></div>
+      <div><h2>Participate</h2><button type="button" data-waitlist-open>Join the waitlist</button><a href="#application-status">First cohort</a><span>Collaborator pathway — coming soon</span></div>
+      <div><h2>Follow</h2><span>Build updates — coming soon</span><span>Social channels — not yet published</span></div>
+      <div><h2>Information</h2><span>Contact — coming before paid launch</span><span>Privacy — coming before paid launch</span><span>Terms — coming before paid launch</span><span>Accessibility — coming before paid launch</span></div>
+    </div>
+    <div class="shell site-footer__base"><p>© <span data-current-year>2026</span> Random Ten.</p><p>Currently being built and tested.</p></div>
   </footer>
 
-  <!-- ══ WAITLIST MODAL ═════════════════════════════════════════════════════ -->
-  <div class="modal-overlay" id="waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
-    <div class="modal">
-      <button class="modal__close" onclick="closeWaitlist()" aria-label="Close waitlist form">✕</button>
-      <p class="modal__eyebrow">Join the Waitlist</p>
-      <h3 class="modal__title" id="modal-title">Reserve your place before enrolment opens.</h3>
-      <form id="waitlist-form" novalidate>
-        <div class="form-group">
-          <label for="wl-name">Your name</label>
-          <input type="text" id="wl-name" name="name" placeholder="Full name" autocomplete="name" required aria-required="true">
-        </div>
-        <div class="form-group">
-          <label for="wl-email">Email address</label>
-          <input type="email" id="wl-email" name="email" placeholder="your@email.com" autocomplete="email" required aria-required="true">
-        </div>
-        <div class="form-group">
-          <label for="wl-city">Your city <span style="color:var(--grey);font-weight:400">(optional)</span></label>
-          <input type="text" id="wl-city" name="city" placeholder="London, Mumbai, Dubai…">
-        </div>
-        <button type="submit" class="btn btn--gold btn--full" id="waitlist-submit">
-          Secure My Place
-        </button>
-        <div id="waitlist-feedback" aria-live="polite"></div>
+  <div class="modal-layer" data-waitlist-modal hidden>
+    <div class="modal-backdrop" data-waitlist-backdrop></div>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-title" aria-describedby="waitlist-description">
+      <button class="modal__close" type="button" aria-label="Close waitlist form" data-waitlist-close>×</button>
+      <p class="eyebrow">Join the founding waitlist</p>
+      <h2 id="waitlist-title">Begin with one small step.</h2>
+      <p id="waitlist-description">Be among the earliest to hear what Random Ten learns and when participant opportunities open.</p>
+      <form data-waitlist-form novalidate>
+        <div class="form-field"><label for="waitlist-name">Your name</label><input id="waitlist-name" name="name" type="text" autocomplete="name" maxlength="120" required></div>
+        <div class="form-field"><label for="waitlist-email">Email address</label><input id="waitlist-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+        <div class="form-field"><label for="waitlist-city">Your city <span>Optional</span></label><input id="waitlist-city" name="city" type="text" autocomplete="address-level2" maxlength="100"></div>
+        <button class="button button--primary button--full" type="submit" data-waitlist-submit>Join the founding waitlist</button>
+        <div class="form-feedback" role="status" aria-live="polite" aria-atomic="true" data-waitlist-feedback></div>
       </form>
-    </div>
+      <p class="form-privacy">No payment. No confirmed cohort place. Just honest updates as the project develops.</p>
+    </section>
   </div>
 
-  <!-- ══ TOAST ══════════════════════════════════════════════════════════════ -->
-  <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
-
-  <!-- ══ SCRIPTS ════════════════════════════════════════════════════════════ -->
-  <script>
-    // ── Waitlist modal ──────────────────────────────────────────────────
-    function openWaitlist() {
-      const modal = document.getElementById('waitlist-modal');
-      modal.hidden = false;
-      document.body.style.overflow = 'hidden';
-      document.getElementById('wl-name').focus();
-    }
-    function closeWaitlist() {
-      document.getElementById('waitlist-modal').hidden = true;
-      document.body.style.overflow = '';
-    }
-    document.getElementById('waitlist-modal').addEventListener('click', function(e) {
-      if (e.target === this) closeWaitlist();
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeWaitlist();
-    });
-
-    // ── Waitlist form submit ────────────────────────────────────────────
-    document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('waitlist-submit');
-      const feedback = document.getElementById('waitlist-feedback');
-      const name  = document.getElementById('wl-name').value.trim();
-      const email = document.getElementById('wl-email').value.trim();
-      const city  = document.getElementById('wl-city').value.trim();
-
-      if (!name || !email) {
-        feedback.innerHTML = '<p class="form-error">Please enter your name and email.</p>';
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = 'Securing your place…';
-      feedback.innerHTML = '';
-
-      try {
-        const res  = await fetch('/api/waitlist', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, city }),
-        });
-        const data = await res.json();
-
-        if (res.ok) {
-          feedback.innerHTML = `<p class="form-success">You are on the list, ${name}. Check your inbox.</p>`;
-          btn.textContent = 'You are in.';
-          showToast('Welcome to Random Ten. Your place is reserved.');
-          setTimeout(closeWaitlist, 2500);
-        } else {
-          feedback.innerHTML = `<p class="form-error">${data.error || 'Something went wrong.'}</p>`;
-          btn.disabled = false;
-          btn.textContent = 'Secure My Place';
-        }
-      } catch {
-        feedback.innerHTML = '<p class="form-error">Connection error. Please try again.</p>';
-        btn.disabled = false;
-        btn.textContent = 'Secure My Place';
-      }
-    });
-
-    // ── Stripe Checkout ─────────────────────────────────────────────────
-    async function handleCheckout() {
-      const btn = document.getElementById('checkout-btn');
-      if (btn) { btn.disabled = true; btn.textContent = 'Loading…'; }
-
-      try {
-        const res  = await fetch('/api/checkout', { method: 'POST' });
-        const data = await res.json();
-        if (data.url) {
-          window.location.href = data.url;
-        } else {
-          showToast(data.error || 'Could not open payment. Please try again.');
-          if (btn) { btn.disabled = false; btn.textContent = 'Enrol Now — £650'; }
-        }
-      } catch {
-        showToast('Connection error. Please try again.');
-        if (btn) { btn.disabled = false; btn.textContent = 'Enrol Now — £650'; }
-      }
-    }
-
-    // ── Smooth scroll ───────────────────────────────────────────────────
-    function scrollToSection(id) {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
-    // ── Toast notification ──────────────────────────────────────────────
-    function showToast(msg) {
-      const t = document.getElementById('toast');
-      t.textContent = msg;
-      t.classList.add('toast--visible');
-      setTimeout(() => t.classList.remove('toast--visible'), 4000);
-    }
-
-    // ── Scroll reveal ───────────────────────────────────────────────────
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.phase, .problem__card, .skill-card, .testimonial, .pricing__card')
-      .forEach(el => observer.observe(el));
-  </script>
-
+  <script id="skills-data" type="application/json"><%- JSON.stringify(skills).replace(/</g, '\\u003c') %></script>
 </body>
 </html>
