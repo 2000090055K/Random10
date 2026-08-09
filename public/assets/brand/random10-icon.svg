@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 300 260" role="img" aria-labelledby="title desc">
+<title id="title">Random 10 icon</title>
+<desc id="desc">Nine dark nodes form a field of possibilities while one red node advances outward.</desc>
+<rect width="300" height="260" fill="none"/>
+<g transform="translate(20 20)">
+  <circle cx="82" cy="68" r="18" fill="#0A0A0A"/>
+  <circle cx="134" cy="48" r="18" fill="#0A0A0A"/>
+  <circle cx="186" cy="66" r="18" fill="#0A0A0A"/>
+  <circle cx="52" cy="120" r="18" fill="#0A0A0A"/>
+  <circle cx="108" cy="112" r="18" fill="#0A0A0A"/>
+  <circle cx="164" cy="116" r="18" fill="#0A0A0A"/>
+  <circle cx="68" cy="174" r="18" fill="#0A0A0A"/>
+  <circle cx="124" cy="176" r="18" fill="#0A0A0A"/>
+  <circle cx="180" cy="170" r="18" fill="#0A0A0A"/>
+  <rect x="220" y="48" width="34" height="92" rx="17" fill="#D94335" transform="rotate(18 237 94)"/>
+</g>
+</svg>
