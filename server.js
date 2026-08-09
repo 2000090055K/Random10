@@ -17,6 +17,37 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder');
 
 // ── Database ──────────────────────────────────────────────────────────────
 const db = new Database(process.env.DATABASE_FILE || './db/random10.db');
+// ── Database setup ───────────────────────────────────────────────────────────
+
+db.exec(`
+  CREATE TABLE IF NOT EXISTS founding_explorers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+
+    age_range TEXT NOT NULL,
+    location TEXT NOT NULL,
+    situation TEXT NOT NULL,
+
+    current_question TEXT NOT NULL,
+    barrier TEXT NOT NULL,
+    commitment TEXT NOT NULL,
+
+    acquisition_source TEXT,
+    restrictions TEXT,
+
+    story_consent INTEGER NOT NULL DEFAULT 0,
+    programme_consent INTEGER NOT NULL DEFAULT 0,
+
+    status TEXT NOT NULL DEFAULT 'applied',
+
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  );
+`);
+
+console.log('[Database] Founding Explorers table ready');
 
 // ── Email transporter (nodemailer) ────────────────────────────────────────
 const transporter = nodemailer.createTransport({
@@ -144,13 +175,194 @@ app.get('/', (req, res) => {
     currency: (process.env.STRIPE_CURRENCY || 'gbp').toUpperCase(),
   });
 });
-
+// ── Founding 100 application page ──────────────────────────────────────────
+app.get('/founding-100', (req, res) => {
+  res.render('founding-100', {
+    submitted: req.query.submitted === 'true',
+  });
+});
 // Success page
 app.get('/success', (req, res) => res.render('success'));
 
 // Cancelled payment
 app.get('/cancel', (req, res) => res.render('cancel'));
+// ── Founding 100 application ───────────────────────────────────────────────
+app.post('/api/founding-100', apiLimiter, async (req, res) => {
+  const firstName = (req.body.first_name || '').trim().slice(0, 80);
+  const lastName = (req.body.last_name || '').trim().slice(0, 80);
+  const email = (req.body.email || '').trim().toLowerCase().slice(0, 254);
 
+  const ageRange = (req.body.age_range || '').trim().slice(0, 30);
+  const location = (req.body.location || '').trim().slice(0, 120);
+  const situation = (req.body.situation || '').trim().slice(0, 120);
+
+  const currentQuestion = (req.body.current_question || '').trim().slice(0, 1200);
+  const barrier = (req.body.barrier || '').trim().slice(0, 200);
+  const commitment = (req.body.commitment || '').trim().slice(0, 30);
+
+  const acquisitionSource = (req.body.acquisition_source || '')
+    .trim()
+    .slice(0, 100);
+
+  const restrictions = (req.body.restrictions || '')
+    .trim()
+    .slice(0, 1000);
+
+  const storyConsent = req.body.story_consent === 'on' ? 1 : 0;
+  const programmeConsent = req.body.programme_consent === 'on' ? 1 : 0;
+
+  // Required fields
+  if (
+    !firstName ||
+    !lastName ||
+    !email ||
+    !ageRange ||
+    !location ||
+    !situation ||
+    !currentQuestion ||
+    !barrier ||
+    !commitment
+  ) {
+    return res.status(400).json({
+      error: 'Please complete all required fields.',
+    });
+  }
+
+  if (!isValidEmail(email)) {
+    return res.status(400).json({
+      error: 'Please enter a valid email address.',
+    });
+  }
+
+  if (!programmeConsent) {
+    return res.status(400).json({
+      error: 'Please confirm that we may contact you about the Founding Explorer programme.',
+    });
+  }
+
+  try {
+    db.prepare(`
+      INSERT INTO founding_explorers (
+        first_name,
+        last_name,
+        email,
+        age_range,
+        location,
+        situation,
+        current_question,
+        barrier,
+        commitment,
+        acquisition_source,
+        restrictions,
+        story_consent,
+        programme_consent,
+        status
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'applied')
+    `).run(
+      firstName,
+      lastName,
+      email,
+      ageRange,
+      location,
+      situation,
+      currentQuestion,
+      barrier,
+      commitment,
+      acquisitionSource,
+      restrictions,
+      storyConsent,
+      programmeConsent
+    );
+  } catch (err) {
+    if (err.message.includes('UNIQUE')) {
+      return res.status(409).json({
+        error: 'You have already applied to become a Founding Explorer.',
+      });
+    }
+
+    console.error('[Founding 100 DB error]', err.message);
+
+    return res.status(500).json({
+      error: 'Something went wrong. Please try again.',
+    });
+  }
+
+  // Applicant confirmation
+  await sendEmail(
+    email,
+    'Your Random 10 Founding Explorer application is in',
+    `
+      <div style="
+        font-family:Arial,sans-serif;
+        max-width:620px;
+        margin:auto;
+        padding:42px 28px;
+        background:#F5F3EE;
+        color:#0A0A0A;
+      ">
+        <p style="
+          color:#D94335;
+          font-size:12px;
+          font-weight:700;
+          letter-spacing:.12em;
+          text-transform:uppercase;
+        ">
+          RANDOM 10 — FOUNDING EXPLORERS
+        </p>
+
+        <h1 style="
+          font-size:30px;
+          line-height:1.08;
+          margin:18px 0 24px;
+        ">
+          You've opened the first door.
+        </h1>
+
+        <p style="line-height:1.7;">
+          Hi ${firstName},
+        </p>
+
+        <p style="line-height:1.7;">
+          Your application to join the first 100 Random 10 explorers is in.
+        </p>
+
+        <p style="line-height:1.7;">
+          We're bringing people into the programme gradually so we can learn
+          from how the method works in the real world — not simply collect
+          as many sign-ups as possible.
+        </p>
+
+        <p style="line-height:1.7;">
+          If selected, your first job will be simple:
+          <strong>try one thing you do not currently have enough evidence about.</strong>
+        </p>
+
+        <p style="line-height:1.7;margin-top:26px;">
+          We'll be in touch.
+        </p>
+
+        <div style="
+          margin-top:40px;
+          padding-top:20px;
+          border-top:1px solid #D9D5CD;
+        ">
+          <strong>Random 10</strong><br>
+          <span style="color:#68645E;">
+            Try. Reflect. Score. Follow the Signal.
+          </span>
+        </div>
+      </div>
+    `
+  );
+
+  console.log('[Founding 100 application]', email);
+
+  return res.json({
+    success: true,
+    message: 'Your Founding Explorer application is in.',
+  });
+});
 // ── Waitlist signup ───────────────────────────────────────────────────────
 app.post('/api/waitlist', apiLimiter, async (req, res) => {
   const name  = (req.body.name  || '').trim().slice(0, 120);
@@ -232,14 +444,36 @@ app.post('/api/checkout', apiLimiter, async (req, res) => {
 // ── Admin panel ───────────────────────────────────────────────────────────
 app.get('/admin', adminLimiter, (req, res) => {
   const token = req.query.token || req.headers['x-admin-token'];
+
   if (!token || token !== process.env.ADMIN_TOKEN) {
-    return res.status(401).send('Unauthorised. Provide ?token=YOUR_ADMIN_TOKEN');
+    return res.status(401).send(
+      'Unauthorised. Provide ?token=YOUR_ADMIN_TOKEN'
+    );
   }
 
-  const waitlist = db.prepare('SELECT * FROM waitlist ORDER BY created_at DESC').all();
-  const payments = db.prepare('SELECT * FROM payments ORDER BY created_at DESC').all();
+  const waitlist = db.prepare(`
+    SELECT *
+    FROM waitlist
+    ORDER BY created_at DESC
+  `).all();
 
-  res.render('admin', { waitlist, payments });
+  const payments = db.prepare(`
+    SELECT *
+    FROM payments
+    ORDER BY created_at DESC
+  `).all();
+
+  const foundingExplorers = db.prepare(`
+    SELECT *
+    FROM founding_explorers
+    ORDER BY created_at DESC
+  `).all();
+
+  res.render('admin', {
+    waitlist,
+    payments,
+    foundingExplorers,
+  });
 });
 
 // ── Start server ──────────────────────────────────────────────────────────

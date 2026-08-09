@@ -1295,3 +1295,508 @@ section {
   body { background: white; color: black; }
   section { break-inside: avoid; padding-block: 32px; }
 }
+/* =========================================================
+   FOUNDING 100
+   ========================================================= */
+
+.founding-hero,
+.founding-belief,
+.founding-apply,
+.founding-confirmation {
+  background: var(--rt-bg);
+  color: var(--rt-text);
+}
+
+.founding-hero {
+  padding: clamp(120px, 12vw, 180px) 0 clamp(100px, 10vw, 150px);
+}
+
+.founding-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
+  gap: clamp(48px, 7vw, 110px);
+  align-items: end;
+}
+
+.founding-hero h1 {
+  max-width: 980px;
+  margin: 0;
+  font-size: clamp(58px, 7.8vw, 118px);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+}
+
+.founding-hero__copy {
+  max-width: 520px;
+  padding-bottom: 10px;
+}
+
+.founding-hero__copy p {
+  font-size: var(--step-0);
+  line-height: 1.6;
+}
+
+.founding-hero__lead {
+  font-size: var(--step-1) !important;
+  font-weight: 700;
+}
+
+.founding-meta {
+  margin-top: 14px;
+  color: var(--rt-muted);
+  font-size: var(--step--1) !important;
+}
+
+
+/* PROCESS */
+
+.founding-process {
+  padding: clamp(100px, 10vw, 150px) 0;
+}
+
+.founding-process .section-intro {
+  margin-bottom: clamp(60px, 7vw, 100px);
+}
+
+.founding-steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid #333;
+}
+
+.founding-steps article {
+  min-height: 300px;
+  padding: 26px 24px 30px 0;
+  border-bottom: 1px solid #333;
+}
+
+.founding-steps article + article {
+  padding-left: 24px;
+  border-left: 1px solid #333;
+}
+
+.founding-step__number {
+  margin: 0 0 70px;
+  color: var(--rt-red);
+  font-size: var(--step--1);
+  font-weight: 700;
+}
+
+.founding-steps h3 {
+  margin: 0 0 14px;
+  color: var(--rt-white);
+  font-size: clamp(24px, 2vw, 34px);
+}
+
+.founding-steps p {
+  color: #b8b8b8;
+  line-height: 1.55;
+}
+
+
+/* COMMITMENT */
+
+.founding-belief {
+  padding: clamp(100px, 10vw, 150px) 0;
+}
+
+.founding-belief .section-intro {
+  align-items: end;
+}
+
+.founding-belief h2 {
+  margin: 0;
+  font-size: clamp(66px, 8vw, 118px);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.founding-belief .section-intro > div {
+  max-width: 520px;
+  padding-bottom: 8px;
+}
+
+.founding-belief .section-intro > div p {
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+.founding-belief__statement {
+  margin: 28px 0;
+  font-size: clamp(26px, 2.5vw, 38px) !important;
+  line-height: 1.25 !important;
+}
+
+
+/* FIT */
+
+.founding-fit {
+  padding: clamp(100px, 10vw, 150px) 0;
+}
+
+.founding-fit__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(60px, 8vw, 130px);
+}
+
+.founding-fit h2 {
+  margin: 0;
+  color: var(--rt-white);
+  font-size: clamp(58px, 6vw, 98px);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+.founding-fit__lists {
+  display: grid;
+  gap: 56px;
+  align-content: end;
+}
+
+.founding-fit__lists > div {
+  padding-top: 26px;
+  border-top: 1px solid #333;
+}
+
+.founding-fit__lists h3 {
+  margin: 0 0 20px;
+  color: var(--rt-white);
+  font-size: var(--step-1);
+}
+
+.founding-fit__lists ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.founding-fit__lists li {
+  margin-bottom: 12px;
+  color: #d2d2d2;
+  line-height: 1.5;
+}
+
+
+/* APPLICATION */
+
+.founding-apply {
+  padding: clamp(110px, 11vw, 170px) 0;
+}
+
+.founding-apply__grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(60px, 8vw, 130px);
+  align-items: start;
+}
+
+.founding-apply__intro {
+  position: sticky;
+  top: calc(var(--rt-header-height) + 40px);
+}
+
+.founding-apply__intro h2 {
+  margin: 0 0 28px;
+  font-size: clamp(52px, 5.5vw, 88px);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+.founding-apply__intro p {
+  max-width: 430px;
+  line-height: 1.6;
+}
+
+
+/* FORM */
+
+.founding-form {
+  max-width: 760px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.form-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-field {
+  margin-bottom: 26px;
+}
+
+.form-field label,
+.form-field legend {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--rt-text);
+  font-size: var(--step--1);
+  font-weight: 700;
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  min-height: 54px;
+  border: 1px solid var(--rt-border);
+  border-radius: 0;
+  padding: 14px 15px;
+  background: var(--rt-white);
+  color: var(--rt-text);
+  font: inherit;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.form-field textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--rt-black);
+}
+
+.form-note {
+  margin: 8px 0 0;
+  color: var(--rt-muted);
+  font-size: var(--step--1);
+  line-height: 1.45;
+}
+
+
+/* COMMITMENT RADIO OPTIONS */
+
+.founding-commitment {
+  margin: 0 0 30px;
+  padding: 0;
+  border: 0;
+}
+
+.founding-commitment legend {
+  margin-bottom: 14px;
+}
+
+.founding-commitment label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+  margin: 0;
+  padding: 12px 14px;
+  border-top: 1px solid var(--rt-border);
+  cursor: pointer;
+}
+
+.founding-commitment label:last-child {
+  border-bottom: 1px solid var(--rt-border);
+}
+
+.founding-commitment input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--rt-red);
+}
+
+.founding-commitment label span {
+  font-weight: 600;
+}
+
+
+/* CHECKBOXES */
+
+.founding-consents {
+  display: grid;
+  gap: 14px;
+  margin: 34px 0;
+  padding-top: 26px;
+  border-top: 1px solid var(--rt-border);
+}
+
+.form-checkbox {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  cursor: pointer;
+}
+
+.form-checkbox input {
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  accent-color: var(--rt-red);
+}
+
+.form-checkbox span {
+  line-height: 1.45;
+}
+
+
+/* FORM STATUS */
+
+.founding-form__message {
+  margin: 0 0 20px;
+  padding: 16px 18px;
+  border: 1px solid var(--rt-border);
+  font-weight: 700;
+}
+
+.founding-form__message.is-error {
+  border-color: var(--rt-red);
+  color: var(--rt-red-dark);
+}
+
+.founding-form__message.is-success {
+  border-color: var(--rt-black);
+}
+
+.founding-form__submit {
+  width: 100%;
+  min-height: 58px;
+}
+
+.founding-form__submit:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.founding-form__privacy {
+  margin-top: 14px;
+  color: var(--rt-muted);
+  font-size: var(--step--1);
+}
+
+
+/* CONFIRMATION */
+
+.founding-confirmation {
+  min-height: calc(100vh - var(--rt-header-height));
+  padding: clamp(120px, 12vw, 180px) 0;
+}
+
+.founding-confirmation__inner {
+  max-width: 920px;
+}
+
+.founding-confirmation h1 {
+  margin: 0 0 28px;
+  font-size: clamp(70px, 9vw, 130px);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.founding-confirmation__lead {
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+
+.founding-confirmation__prompt {
+  max-width: 680px;
+  margin: 80px 0 50px;
+  padding-top: 30px;
+  border-top: 2px solid var(--rt-red);
+}
+
+.founding-confirmation__prompt h2 {
+  font-size: clamp(32px, 4vw, 56px);
+}
+
+
+/* FOUNDING PAGE HEADER FIX */
+
+body:has(.founding-hero) .site-header,
+body:has(.founding-confirmation) .site-header {
+  background: var(--rt-bg);
+}
+
+body:has(.founding-hero) .site-logo img,
+body:has(.founding-confirmation) .site-logo img {
+  width: clamp(155px, 15vw, 220px);
+  height: auto;
+  display: block;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+
+  .founding-hero__inner,
+  .founding-fit__grid,
+  .founding-apply__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .founding-hero__copy {
+    max-width: 650px;
+  }
+
+  .founding-steps {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .founding-steps article:nth-child(odd) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .founding-apply__intro {
+    position: static;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .founding-hero {
+    padding-top: 88px;
+  }
+
+  .founding-hero h1 {
+    font-size: clamp(46px, 13vw, 72px);
+  }
+
+  .founding-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .founding-steps article,
+  .founding-steps article + article {
+    min-height: auto;
+    padding: 28px 0;
+    border-left: 0;
+  }
+
+  .founding-step__number {
+    margin-bottom: 32px;
+  }
+
+  .founding-belief h2,
+  .founding-fit h2,
+  .founding-apply__intro h2 {
+    font-size: clamp(48px, 13vw, 70px);
+  }
+
+  .form-grid--two {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .founding-fit__lists {
+    gap: 38px;
+  }
+
+  .founding-confirmation h1 {
+    font-size: clamp(54px, 15vw, 84px);
+  }
+}

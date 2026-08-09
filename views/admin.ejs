@@ -22,6 +22,25 @@
     tr:hover td { background:rgba(255,255,255,0.02); }
     .badge { display:inline-block; padding:2px 8px; border-radius:3px; font-size:11px; font-weight:700; }
     .badge--green { background:rgba(46,196,182,0.15); color:#2EC4B6; }
+    .badge--gold {
+  background: rgba(245,166,35,0.14);
+  color: var(--gold);
+}
+
+.badge--red {
+  background: rgba(233,69,96,0.14);
+  color: var(--red);
+}
+
+.badge--grey {
+  background: rgba(156,163,175,0.14);
+  color: var(--grey);
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
     .empty { color:var(--grey); font-size:13px; padding:20px 0; }
   </style>
 </head>
@@ -30,6 +49,10 @@
   <p class="sub">Internal dashboard. Keep this URL private.</p>
 
   <div class="stat-row">
+    <div class="stat">
+  <div class="stat__num"><%= foundingExplorers.length %></div>
+  <div class="stat__label">FOUNDING 100 APPLICATIONS</div>
+</div>
     <div class="stat">
       <div class="stat__num"><%= waitlist.length %></div>
       <div class="stat__label">WAITLIST SIGNUPS</div>
@@ -45,7 +68,175 @@
       <div class="stat__label">TOTAL REVENUE</div>
     </div>
   </div>
+<div class="section">
 
+  <h2>Founding 100 Applications</h2>
+
+  <% if (foundingExplorers.length === 0) { %>
+
+    <p class="empty">
+      No Founding Explorer applications yet.
+    </p>
+
+  <% } else { %>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Location</th>
+            <th>Situation</th>
+            <th>Trying to figure out</th>
+            <th>Barrier</th>
+            <th>Commitment</th>
+            <th>Source</th>
+            <th>Restrictions</th>
+            <th>Story</th>
+            <th>Status</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <% foundingExplorers.forEach(function(f, i) { %>
+
+            <tr>
+
+              <td><%= i + 1 %></td>
+
+              <td>
+                <strong>
+                  <%= f.first_name %> <%= f.last_name %>
+                </strong>
+              </td>
+
+              <td>
+                <a
+                  href="mailto:<%= f.email %>"
+                  style="color:var(--gold);text-decoration:none;"
+                >
+                  <%= f.email %>
+                </a>
+              </td>
+
+              <td>
+                <%= f.age_range || '—' %>
+              </td>
+
+              <td>
+                <%= f.location || '—' %>
+              </td>
+
+              <td>
+                <%= f.situation || '—' %>
+              </td>
+
+              <td style="min-width:280px;line-height:1.5;">
+                <%= f.current_question || '—' %>
+              </td>
+
+              <td>
+                <%= f.barrier || '—' %>
+              </td>
+
+              <td>
+
+                <% if (f.commitment === 'Yes') { %>
+
+                  <span class="badge badge--green">
+                    Yes
+                  </span>
+
+                <% } else if (f.commitment === 'Maybe') { %>
+
+                  <span class="badge badge--gold">
+                    Maybe
+                  </span>
+
+                <% } else { %>
+
+                  <span class="badge badge--grey">
+                    <%= f.commitment || '—' %>
+                  </span>
+
+                <% } %>
+
+              </td>
+
+              <td>
+                <%= f.acquisition_source || '—' %>
+              </td>
+
+              <td style="min-width:220px;line-height:1.5;">
+                <%= f.restrictions || '—' %>
+              </td>
+
+              <td>
+
+                <% if (f.story_consent) { %>
+
+                  <span class="badge badge--green">
+                    YES
+                  </span>
+
+                <% } else { %>
+
+                  <span class="badge badge--grey">
+                    NO
+                  </span>
+
+                <% } %>
+
+              </td>
+
+              <td>
+
+                <% if (f.status === 'accepted') { %>
+
+                  <span class="badge badge--green">
+                    ACCEPTED
+                  </span>
+
+                <% } else if (f.status === 'rejected') { %>
+
+                  <span class="badge badge--red">
+                    REJECTED
+                  </span>
+
+                <% } else { %>
+
+                  <span class="badge badge--gold">
+                    <%= (f.status || 'applied').toUpperCase() %>
+                  </span>
+
+                <% } %>
+
+              </td>
+
+              <td>
+                <%= new Date(f.created_at).toLocaleDateString('en-GB') %>
+              </td>
+
+            </tr>
+
+          <% }); %>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  <% } %>
+
+</div>
   <div class="section">
     <h2>Waitlist Signups</h2>
     <% if (waitlist.length === 0) { %>
